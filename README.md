@@ -57,7 +57,7 @@ Things you may want to cover:
 |phone_number|string||
 |user_id|string|null: false, foreign_key: true|
 ### Association
-- has_one :user
+- belongs_to :user
 
 ## user_addressesテーブル
 |Column|Type|Options|
@@ -69,7 +69,7 @@ Things you may want to cover:
 |building_name|string||
 |user_id|string|null: false, foreign_key: true|
 ### Association
-- has_one :user
+- belongs_to :user
 
 ## categories_table
 |Column|Type|Options|
@@ -88,7 +88,6 @@ Things you may want to cover:
 ## items_table
 |Column|Type|Options|
 |------|----|-------|
-|item_img|string||
 |buyer|string||
 |size|string||
 |item_condition|string||
@@ -152,7 +151,7 @@ Things you may want to cover:
 ## item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|url|string||
+|url|string|null: false|
 |item_id|string|foreign_key: true|
 ### Association
 - belongs_to :item
