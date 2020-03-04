@@ -99,8 +99,8 @@ Things you may want to cover:
 |item_description|text||
 |trading_status|string||
 |price|integer||
-|category_id|string|foreign_key: ture|
-|brand_id|string|foreign_key: ture|
+|category_id|string|foreign_key: true|
+|brand_id|string|foreign_key: true|
 ### Association
 - has_many :item_users
 - has_many :items through: :item_users
