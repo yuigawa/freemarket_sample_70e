@@ -6,6 +6,7 @@
 
 消しました
 
+conflict@takeishi
 
 # README
 
