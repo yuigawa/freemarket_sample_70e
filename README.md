@@ -1,7 +1,3 @@
-
-
-conflict@takeishi
-
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -26,3 +22,128 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# DB設計
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false|
+|credit_card_id|integer|null: false, foreign_key: true|
+|evaluation_list|string|
+|points|integer||
+|password|string|null: false|
+### Association
+- has_many :item_users
+- has_many :items through: :item_users
+- has_many :comments
+- has_many :favorites
+- has_one  :profile
+- has_one  :user_address
+- has_one  :credit_card
+
+## profilesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birth_year|date|null: false|
+|birth_month|date|null: false|
+|birth_day|date|null: false|
+|introduction|text||
+|image|string||
+|phone number|string||
+|user_id|string|null: false, foreign_key: true|
+### Association
+- has_one :user
+
+## user_addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|post_code|integer|null: false|
+|prefecture_code|string|null: false|
+|city|string|null: false, foreign_key: true|
+|house_number|string||
+|building_name|string||
+|user_id|string|null: false, foreign_key: true|
+### Association
+- has_one :user
+
+## categories_table
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :items
+
+## brands_table
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :items
+
+## items_table
+|Column|Type|Options|
+|------|----|-------|
+|item_img|string||
+|buyer|string||
+|category|string||
+|brand|string||
+|size|string||
+|item_condition|string||
+|postage_payer|string||
+|postage_type|string||
+|prefecture_code|string||
+|estimated_shipping_date|string||
+|item_description|text||
+|trading_status|string||
+|price|integer||
+### Association
+- has_many :item_users
+- has_many :items through: :item_users
+- has_many :comments
+- has_many :favorites
+- belongs_to :brand
+- belongs_to :category
+
+## comments_table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|string|foreign_key: ture|
+|item_id|string|foreign_key: ture|
+|comment|text|null: false|
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## favorites_table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|string|foreign_key: ture|
+|item_id|string|foreign_key: ture|
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## credit_cards table
+|Column|Type|Options|
+|------|----|-------|
+|card_number|integer||
+|expiration_year|integer||
+|expiration_month|integer||
+|security_code|integer||
+|userid|string|null: false, foreign_key: true|
+### Association
+- has_one :user
+
+## item_usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|string|foreign_key: ture|
+|item_id|string|foreign_key: ture|
+### Association
+- belongs_to :user
+- belongs_to :item
