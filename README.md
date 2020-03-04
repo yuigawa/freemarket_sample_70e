@@ -30,7 +30,7 @@ Things you may want to cover:
 |------|----|-------|
 |nickname|string|null: false|
 |email|string|null: false|
-|evaluation_list|string|
+|evaluation_list|string||
 |points|integer||
 |password|string|null: false|
 ### Association
@@ -54,7 +54,7 @@ Things you may want to cover:
 |birth_day|date|null: false|
 |introduction|text||
 |image|string||
-|phone number|string||
+|phone_number|string||
 |user_id|string|null: false, foreign_key: true|
 ### Association
 - has_one :user
@@ -135,7 +135,7 @@ Things you may want to cover:
 |expiration_year|integer||
 |expiration_month|integer||
 |security_code|integer||
-|userid|string|null: false, foreign_key: true|
+|user_id|string|null: false, foreign_key: true|
 ### Association
 - has_one :user
 
