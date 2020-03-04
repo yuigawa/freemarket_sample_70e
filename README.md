@@ -40,7 +40,7 @@ Things you may want to cover:
 - has_many :favorites
 - has_one  :profile
 - has_one  :user_address
-- has_one  :credit_card
+- has_many  :credit_cards
 
 ## profilesテーブル
 |Column|Type|Options|
@@ -103,6 +103,7 @@ Things you may want to cover:
 |brand_id|string|foreign_key: true|
 ### Association
 - has_many :item_users
+- has_many :item_images
 - has_many :items through: :item_users
 - has_many :comments
 - has_many :favorites
@@ -137,7 +138,7 @@ Things you may want to cover:
 |security_code|integer||
 |user_id|string|null: false, foreign_key: true|
 ### Association
-- has_one :user
+- belongs_to :user
 
 ## item_usersテーブル
 |Column|Type|Options|
@@ -146,4 +147,12 @@ Things you may want to cover:
 |item_id|string|foreign_key: true|
 ### Association
 - belongs_to :user
+- belongs_to :item
+
+## item_imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|url|string||
+|item_id|string|foreign_key: true|
+### Association
 - belongs_to :item
