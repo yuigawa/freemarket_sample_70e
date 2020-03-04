@@ -23,13 +23,13 @@ Things you may want to cover:
 
 * ...
 
+
 # DB設計
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
 |email|string|null: false|
-|credit_card_id|integer|null: false, foreign_key: true|
 |evaluation_list|string|
 |points|integer||
 |password|string|null: false|
@@ -90,8 +90,6 @@ Things you may want to cover:
 |------|----|-------|
 |item_img|string||
 |buyer|string||
-|category|string||
-|brand|string||
 |size|string||
 |item_condition|string||
 |postage_payer|string||
@@ -101,6 +99,8 @@ Things you may want to cover:
 |item_description|text||
 |trading_status|string||
 |price|integer||
+|category_id|string|foreign_key: ture|
+|brand_id|string|foreign_key: ture|
 ### Association
 - has_many :item_users
 - has_many :items through: :item_users
