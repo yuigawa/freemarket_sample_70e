@@ -151,7 +151,7 @@ Things you may want to cover:
 ## item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|url|string|null: false|
-|item_id|string|foreign_key: true|
+|url|string||
+|item_id|string|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
