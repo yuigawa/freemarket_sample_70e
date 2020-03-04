@@ -112,8 +112,8 @@ Things you may want to cover:
 ## comments_table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|string|foreign_key: ture|
-|item_id|string|foreign_key: ture|
+|user_id|string|foreign_key: true|
+|item_id|string|foreign_key: true|
 |comment|text|null: false|
 ### Association
 - belongs_to :user
@@ -122,8 +122,8 @@ Things you may want to cover:
 ## favorites_table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|string|foreign_key: ture|
-|item_id|string|foreign_key: ture|
+|user_id|string|foreign_key: true|
+|item_id|string|foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -142,8 +142,8 @@ Things you may want to cover:
 ## item_usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|string|foreign_key: ture|
-|item_id|string|foreign_key: ture|
+|user_id|string|foreign_key: true|
+|item_id|string|foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
