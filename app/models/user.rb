@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :item_users
-  has_many :items through: :item_users
+  has_many :items, through: :item_users
   has_many :comments
   has_many :favorites
   has_one  :profile
