@@ -135,7 +135,7 @@ Things you may want to cover:
 |expiration_year|integer||
 |expiration_month|integer||
 |security_code|integer||
-|user_id|string|null: false, foreign_key: true|
+|user_id|| foreign_key: true|
 ### Association
 - belongs_to :user
 
