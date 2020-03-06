@@ -11,8 +11,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :item_description
       t.string :trading_status
       t.integer :price
-      # t.references :category_id, foreign_key: true
-      # t.references :brand_id, foreign_key: true
+      # t.references :category, foreign_key: true
+      # t.references :brand, foreign_key: true
       t.timestamps
     end
   end
