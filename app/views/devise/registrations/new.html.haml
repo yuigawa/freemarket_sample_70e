@@ -1,21 +1,85 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.main
+  .main_contents
+    %h2.main_header 会員登録情報
+    -# %form#main_content
+    = form_for(resource, as: resource_name, html: {id: "main_content"} ,url: registration_path(resource_name)) do |f|
+      .main_bar
+        .form_group
+          -# %ladel{:for => "nickname"} ニックネーム
+          = f.label :nickname
+          %span.form_require 必須
+          -# %input.input_default{:name => "nickname", :placeholder => "例）太郎", :type => "text", :value => ""}/
+          = f.text_field :nickname, placeholder: "例）太郎" ,class: "input_default"
+        
+        .form_group
+          -# %ladel{:for => "e-mail"} メール
+          = f.label :email
+          %span.form_require 必須
+          -# %input.input_default{:name => "e-mail", :placeholder => "pc.携帯どちらでも可", :type => "e-mail", :value => ""}/
+          = f.text_field :email, placeholder: "pc.携帯どちらでも可", class: "input_default"
+        
+        .form_group.form_group_password
+          -# %ladel{:for => "password"} パスワード
+          = f.label :password
+          %span.form_require 必須
+          -# %input.input_default{:name => "password", :placeholder => "#{@minimum_password_length} characters minimum", :type => "password", :value => ""}/
+          = f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length} characters minimum" if @minimum_password_length
+
+          %p.form_info_text ※英語と数字の両方を含めてください
+
+        -# %form
+        .form_group
+          %div
+            -# %ladel お名前（全角）
+            = f.label :nickname do
+              お名前（全角）
+            %span.form_require 必須
+            = f.text_field :nickname, placeholder: "例）佐藤", class: "family_name_kanji"
+            = f.text_field :nickname, placeholder: "例）太郎", class: "first_name_kanji"
+        
+        .form_group
+          %div
+            -# %ladel お名前カナ（全角）
+            = f.label :nickname do
+              お名前カナ（全角）
+            %span.form_require 必須
+            = f.text_field :nickname, placeholder: "例）サトウ", class: "family_name_kana"
+            = f.text_field :nickname, placeholder: "例）タロウ", class: "first_name_kana"
+
+        .form_group
+          -# %ladel{:for => "birthday"} 生年月日
+          = f.label :nickname do
+            生年月日
+          %span.form_require 必須
+          %br/
+          .birthday_select_wrap
+            .select_wrap
+              -# %i.icon_arrow_bottom
+              -# %select.select_default{:name => "year"}
+              -# options_for_select([{engineer: "Engineer"}, {engineer: "Engineer"}].map{|c|[c[:engineer]]})
+              = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
+                %option{:value => ""} aa
+              = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+              %span 年
+
+            .select_wrap.select_wrap_month
+              -# %i.icon_arrow_bottom
+              -# %select.select_default{:name => "month"}
+              -#   %option{:value => ""} --
+              = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
+                %option{:value => ""} aa
+              = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+              %span 月
+
+            .select_wrap.select_wrap_day
+              -# %i.icon_arrow_bottom
+              -# %select.select_default{:name => "day"}
+              -#   %option{:value => ""} --
+              = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
+                %option{:value => ""} aa
+              = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+              %span 日
+        %button.btn_default{:type => "submit"} 次へ進む
+.footer
+
+
