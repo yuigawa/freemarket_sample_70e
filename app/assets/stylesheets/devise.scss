@@ -31,8 +31,16 @@
       .main_bar{
         max-width: 343px;
         margin: 0 auto;
+        input {
+          height: 28px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 10px 16px 8px;
+          line-height: 1.5;
+        }
         .form_group{
           margin: 0;
+          margin-top: 20px;
           ladel{
             font-weight: 600;
           }
@@ -43,28 +51,27 @@
             width: 100%;
             margin: 8px 0 0;
           }
+          .form_user-name {
+            display: flex;
+            input {
+              width: calc(50% - 6px);
+              margin-left: 5px;
+            }
+          }
         }
+        .form_group_password{
+          margin: 24px 0 0;
+        }
+
       }
     }
   }
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  .form_group form_group_password{
-    margin: 24px 0 0;
-  }
+  // .form_group form_group_password{
+  //   margin: 24px 0 0;
+  // }
   
   .input_default {
     height: 48px;

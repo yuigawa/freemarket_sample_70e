@@ -34,8 +34,9 @@
             = f.label :nickname do
               お名前（全角）
             %span.form_require 必須
-            = f.text_field :nickname, placeholder: "例）佐藤", class: "family_name_kanji"
-            = f.text_field :nickname, placeholder: "例）太郎", class: "first_name_kanji"
+            .form_user-name
+              = f.text_field :nickname, placeholder: "例）佐藤", class: "family_name_kanji"
+              = f.text_field :nickname, placeholder: "例）太郎", class: "first_name_kanji"
         
         .form_group
           %div
@@ -43,8 +44,9 @@
             = f.label :nickname do
               お名前カナ（全角）
             %span.form_require 必須
-            = f.text_field :nickname, placeholder: "例）サトウ", class: "family_name_kana"
-            = f.text_field :nickname, placeholder: "例）タロウ", class: "first_name_kana"
+            .form_user-name
+              = f.text_field :nickname, placeholder: "例）サトウ", class: "family_name_kana"
+              = f.text_field :nickname, placeholder: "例）タロウ", class: "first_name_kana"
 
         .form_group
           -# %ladel{:for => "birthday"} 生年月日
@@ -58,7 +60,7 @@
               -# %select.select_default{:name => "year"}
               -# options_for_select([{engineer: "Engineer"}, {engineer: "Engineer"}].map{|c|[c[:engineer]]})
               = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
-                %option{:value => ""} aa
+                %option{:value => ""} --
               = icon('fa', 'angle-down', class:"icon_arrow_bottom")
               %span 年
 
@@ -67,7 +69,7 @@
               -# %select.select_default{:name => "month"}
               -#   %option{:value => ""} --
               = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
-                %option{:value => ""} aa
+                %option{:value => ""} --
               = icon('fa', 'angle-down', class:"icon_arrow_bottom")
               %span 月
 
@@ -76,10 +78,10 @@
               -# %select.select_default{:name => "day"}
               -#   %option{:value => ""} --
               = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
-                %option{:value => ""} aa
+                %option{:value => ""} --
               = icon('fa', 'angle-down', class:"icon_arrow_bottom")
               %span 日
         %button.btn_default{:type => "submit"} 次へ進む
-.footer
+
 
 
