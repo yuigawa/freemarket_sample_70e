@@ -34,8 +34,7 @@ Things you may want to cover:
 |points|integer||
 |password|string|null: false|
 ### Association
-- has_many :item_users
-- has_many :items through: :item_users
+- has_many :items
 - has_many :comments
 - has_many :favorites
 - has_one  :profile
@@ -89,7 +88,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
-|buyer|string||
+|buyer_id|references|foreign_key: true|
+|seller_id|references|foreign_key: true|
 |size|string||
 |item_condition|string||
 |postage_payer|string||
@@ -102,11 +102,10 @@ Things you may want to cover:
 |category_id|string|foreign_key: true|
 |brand_id|string|foreign_key: true|
 ### Association
-- has_many :item_users
 - has_many :item_images
-- has_many :items through: :item_users
 - has_many :comments
 - has_many :favorites
+- belongs_to :user
 - belongs_to :brand
 - belongs_to :category
 
