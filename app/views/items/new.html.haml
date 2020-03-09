@@ -11,8 +11,8 @@
             %span.box__title--required 必須
           %p.box__file-info 最大10枚までアップロードできます
           .box__file 
-            -# = f.file_field 
-            -# ↑item_imagesテーブル
+            = f.fields_for :item_images do |i|
+              = f.file_field :src
             = icon('fa', 'camera')
             %p 
               ドラッグアンドドロップ 
@@ -32,10 +32,9 @@
           .box__info 
             %label 商品の詳細
           .box__title
-            %label 商品名
+            %label カテゴリー
             %span.box__title--required 必須
-          = f.select :name, {}, {}, {class: "box__input"}
-          -# select categoryモデル未作成のため、一時的に:name
+          = f.select :category_id, options_for_select(@categories.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label ブランド
