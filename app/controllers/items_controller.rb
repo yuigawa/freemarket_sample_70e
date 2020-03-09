@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.item_images.new
     @categories = Category.all
+    @brands = Brand.all
   end
 
   def show

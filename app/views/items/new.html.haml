@@ -39,12 +39,13 @@
           .box__title
             %label ブランド
             %span.box__title--optional 任意
-          = f.text_field :name, class: "box__input", placeholder: "例）シャネル" 
+          -# = f.text_field :name, class: "box__input", placeholder: "例）シャネル" 
+          = f.select :brand_id, options_for_select(@brands.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 商品のサイズ
             %span.box__title--required 必須
-          = f.select :item_condition, {}, {prompt: '選択してください'}, {class: "box__input"}
+          = f.select :size, {}, {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 商品の状態
