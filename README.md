@@ -64,7 +64,7 @@ Things you may want to cover:
 |------|----|-------|
 |post_code|integer|null: false|
 |prefecture_code|string|null: false|
-|city|string|null: false, foreign_key: true|
+|city|string|null: false|
 |house_number|string||
 |building_name|string||
 |user_id|string|null: false, foreign_key: true|
