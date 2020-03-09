@@ -88,6 +88,7 @@ Things you may want to cover:
 ## items_table
 |Column|Type|Options|
 |------|----|-------|
+|name|string||
 |buyer|string||
 |size|string||
 |item_condition|string||

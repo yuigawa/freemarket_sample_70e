@@ -3,6 +3,10 @@ class ItemsController < ApplicationController
     render :show
   end
 
+  def new
+    @item = Item.new
+  end
+
   def show
   end
 end
