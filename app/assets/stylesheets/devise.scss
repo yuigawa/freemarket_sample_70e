@@ -34,8 +34,10 @@
           }
           .form_require{
             background-color: rgba(0, 255, 157, 0.616);
+            color: black;
           }
           input{
+            height: 48px;
             width: 100%;
             margin: 8px 0 0;
           }
@@ -64,11 +66,6 @@
   }
   
   
-  
-  // .form_group form_group_password{
-  //   margin: 24px 0 0;
-  // }
-  
   .input_default {
     height: 48px;
     padding: 10px 16px 8px;
@@ -89,15 +86,17 @@
   
   .birthday_select_wrap{
     display: flex;
+    width: 100%;
+    line-height: 55px;
+    span{
+      color: black;
+    }
+    i{
+      line-height: 55px;
+    }
   }
   
-  .birthday_select_wrap .select_wrap:first-of-type {
-    width: calc(34% - 17px);
-  }
   
-  .icon_arrow_bottom {
-    right: 12px;
-  }
   
   .select_wrap {
     position: relative;
@@ -106,6 +105,9 @@
       position: absolute;
       top: 20px;
       right: 30px;
+    }
+    .icon_arrow_bottom {
+      right: 12px;
     }
   }
 
@@ -130,8 +132,7 @@
     background-color: rgba(0, 255, 157, 0.616);
     margin-top: 30px;
   }
-  
-  
+
   
   .footer{
     z-index: 1;

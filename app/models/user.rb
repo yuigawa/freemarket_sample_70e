@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_one  :profile
   has_one  :user_address
   has_many  :credit_cards
-  accepts_nested_attributes_for :user_addresses
-  # accepts_nested_attributes_for :profiles
+  accepts_nested_attributes_for :user_address, allow_destroy: true
+  accepts_nested_attributes_for :profile, allow_destroy: true
 end
