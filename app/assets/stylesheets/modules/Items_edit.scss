@@ -52,8 +52,8 @@ $flame-border_coler: rgb(238, 236, 236);
           padding-top: 40px;
 
           .icon_logo_fmarket {
-            height: 100px;
-            width: 100px;
+            height: 60px;
+            width: 80px;
           }
         }
         &_text {
@@ -83,8 +83,8 @@ $flame-border_coler: rgb(238, 236, 236);
       padding-top: 20px;
 
       .icon_fmarket {
-        height: 100px;
-        width: 200px;
+        height: 80px;
+        width: 185px;
       }
     }
   }
@@ -262,11 +262,11 @@ $flame-border_coler: rgb(238, 236, 236);
               line-height:60px;
               border: solid;
               border-width: 1px;
-              border-color: rgb(255, 43, 43);
+              border-color: gray;
               text-decoration: none;
               padding: 0 164.5px;
               margin-top: 40px;
-              background-color: rgb(255, 43, 43);
+              background-color: gray;
               font-family: 'arial narrow';
               color: white;
             }
