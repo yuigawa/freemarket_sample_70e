@@ -63,7 +63,7 @@
           .box__title
             %label 発送元の地域
             %span.box__title--required 必須
-          = f.select :prefecture_code, {}, {prompt: '選択してください'}, {class: "box__input"}
+          = f.select :prefecture_code, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 発送までの日数
