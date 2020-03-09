@@ -11,7 +11,7 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.string :image
       t.string :phone_number
-      # t.references :user, foreign_key: true
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

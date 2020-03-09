@@ -2,8 +2,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
   def change
     create_table :items do |t|
       t.string :name
-      t.references :seller
-      t.references :buyer
       t.string :size
       t.string :item_condition
       t.string :postage_payer
@@ -13,11 +11,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :item_description
       t.string :trading_status
       t.integer :price
-      # t.references :category, foreign_key: true
-      # t.references :brand, foreign_key: true
+      # referenceは'20200309065853_add_column_to_item'に記述
       t.timestamps
     end
-    add_foreign_key :items, :users, column: :seller_id
-    add_foreign_key :items, :users, column: :buyer_id
   end
 end
