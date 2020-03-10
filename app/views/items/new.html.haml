@@ -10,7 +10,7 @@
             %label 出品画像
             %span.box__title--required 必須
           %p.box__file-info 最大10枚までアップロードできます
-          .box__file 
+          .box__file#image-box
             = f.fields_for :item_images do |i|
               = i.file_field :src, class: "box__file--field"
             = icon('fa', 'camera')
