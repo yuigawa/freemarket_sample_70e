@@ -12,7 +12,7 @@ lady_tops = lady.children.create(name: "トップス")
 lady_jacket = lady.children.create(name: "ジャケット/アウター")
 lady_pants = lady.children.create(name: "パンツ")
 lady_skirt = lady.children.create(name: "スカート")
-lady_onepiece = lady.children.create(name: "")
+lady_onepiece = lady.children.create(name: "ワンピース")
 lady_shoes = lady.children.create(name: "靴")
 lady_room_wear = lady.children.create(name: "ルームウェア/パジャマ")
 lady_leg_wear = lady.children.create(name: "レッグウェア")
@@ -48,7 +48,31 @@ lady_suit.children.create([{name: "スカートスーツ上下"}, {name: "パン
 lady_maternity.children.create([{name: "トップス"}, {name: "アウター"}, {name: "インナー"},{name: "ワンピース"}, {name: "パンツ/スパッツ"}, {name: "スカート"}, {name: "パジャマ"}, {name: "授乳服"}, {name: "その他"}])
 lady_other.children.create([{name: "コスプレ"}, {name: "下着"}, {name: "その他"}])
 
-lady_ = lady.children.create(name: "")
+
+men= Category.create(name: "メンズ")
+
+men_tops = men.children.create(name: "トップス")
+men_jacket = men.children.create(name: "ジャケット/アウター")
+men_pants = men.children.create(name: "パンツ")
+men_shoes = men.children.create(name: "靴")
+men_bag = men.children.create(name: "バッグ")
+men_suits = men.children.create(name: "スーツ")
+
+
+
+
+men_tops = men.children.create(name: "トップス")
+men_jacket = men.children.create(name: "ジャケット/アウター")
+men_pants = men.children.create(name: "パンツ")
+men_shoes = men.children.create(name: "靴")
+men_bag = men.children.create(name: "バッグ")
+men_suits = men.children.create(name: "スーツ")
+m
+
+
+
+
+
 lady_ = lady.children.create(name: "")
 lady_ = lady.children.create(name: "")
 lady_ = lady.children.create(name: "")
