@@ -1,3 +1,3 @@
 class UserAddressesController < ApplicationController
-  
+
 end

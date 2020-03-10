@@ -3,6 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # extend ActiveHash::Associations::ActiveRecordExtensions
   # belongs_to_active_hash :prefecture
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :birth_year
+  belongs_to_active_hash :birth_month
+  belongs_to_active_hash :birth_day
+  belongs_to_active_hash :prefecture
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
