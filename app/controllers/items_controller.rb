@@ -1,14 +1,10 @@
 class ItemsController < ApplicationController
-  def index
-    
-  end
+  before_action :set_info, only: [:new, :create, :edit, :update]
 
   def new
     @item = Item.new
     @item.item_images.new
-    @categories = Category.all
-    @brands = Brand.all
-    @prefectures = Prefecture.all
+
   end
 
   def create
@@ -16,6 +12,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      logger.debug @item.errors.inspect
       render :new
     end
   end
@@ -28,6 +25,12 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :item_description, :category_id, :brand_id, :size, :item_condition, :postage_payer, :prefecture_code, :estimated_shipping_date, :price, item_images_attributes: [:src]).merge(seller_id: 1)
+    params.require(:item).permit(:name, :item_description, :category_id, :brand_id, :size, :item_condition, :postage_payer, :prefecture_code, :estimated_shipping_date, :price, item_images_attributes: [:src]).merge(user_id: 1)
+  end
+
+  def set_info
+    @categories = Category.all
+    @brands = Brand.all
+    @prefectures = Prefecture.all
   end
 end
