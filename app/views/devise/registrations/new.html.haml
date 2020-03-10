@@ -1,21 +1,130 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.devire_wrrper
+  .main
+    .main_contents
+      %h2.main_header 会員登録情報
+      = form_for(resource, as: resource_name, html: {id: "main_content"} ,url: registration_path(resource_name)) do |f|
+        .main_bar
+
+          -# ニックネーム
+          .form_group
+            = f.label :nickname do
+              ニックネーム
+            %span.form_require 必須
+            = f.text_field :nickname, placeholder: "例）太郎" ,class: "input_default"
+  
+            -# メールアドレス
+          .form_group
+            = f.label :email do
+              メールアドレス
+            %span.form_require 必須
+            = f.text_field :email, placeholder: "pc.携帯どちらでも可", class: "input_default"
+
+          -# パスワード
+          .form_group.form_group_password
+            = f.label :password do
+              パスワード
+            %span.form_require 必須
+            = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上の半角英数字" if @minimum_password_length
+            %p.form_info_text ※英語と数字の両方を含めてください
+
+          -# お名前（全角）
+          .form_group
+            %div
+              = f.label :family_name do
+                お名前（全角）
+              %span.form_require 必須
+              .form_user-name
+                = f.text_field :nickname, placeholder: "例）佐藤", class: "family_name_kanji"
+                = f.text_field :nickname, placeholder: "例）太郎", class: "first_name_kanji"
+          
+          -# お名前カナ（全角）
+          .form_group
+            %div
+              = f.label :family_name_kana do
+                お名前カナ（全角）
+              %span.form_require 必須
+              .form_user-name
+                = f.text_field :nickname, placeholder: "例）サトウ", class: "family_name_kana"
+                = f.text_field :nickname, placeholder: "例）タロウ", class: "first_name_kana"
+
+          -# 生年月日
+          .form_group
+            生年月日
+            %span.form_require 必須
+            
+            -# 生年月日 年
+            %br/
+            .birthday_select_wrap
+              .select_wrap
+              = f.fields_for :profires do |t|
+                = t.select :birth_year,  { engineer: "Engineer"}, {}, { class: "select_default" } do
+                  %option{:value => ""} --
+                = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+                %span 年
+
+              -# 生年月日 月
+              .select_wrap.select_wrap_month
+              = f.fields_for :profires do |t|
+                = t.select :birth_month,  { engineer: "Engineer"}, {}, { class: "select_default" } do
+                  %option{:value => ""} --
+                = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+                %span 月
+
+              -# 生年月日 日
+              .select_wrap.select_wrap_day
+              = f.fields_for :profires do |t|
+                = t.select :birth_day,  { engineer: "Engineer"}, {}, { class: "select_default" } do
+                  %option{:value => ""} --
+                = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+                %span 日
+              
+            -# 郵便番号
+            .form_group
+              = f.label :post_code do
+                郵便番号
+              %span.form_require 必須
+              = f.text_field :nickname, placeholder: "例）123-4567" ,class: "input_default"
+
+            -# 都道府県
+            .form_group.address_scrren
+              = f.label :prefecture_code do
+                都道府県
+              = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
+                %option{:value => ""} --
+              = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+
+            -# 市区町村
+            .form_group
+              = f.label :city do
+                市区町村
+              %span.form_require 必須
+              = f.fields_for :user_addresses do |i|
+                = i.text_field :city, placeholder: "例）横浜市川崎区" ,class: "input_default"
+
+
+            -# 番地
+            .form_group
+              = f.label :house_number do
+                番地
+              %span.form_require 必須
+              = f.fields_for :user_addresses do |i|
+                = i.text_field :house_number, placeholder: "例）青山1-1-1" ,class: "input_default"
+
+            -# マンションやビル名
+            .form_group
+              = f.label :building_name do
+                マンションやビル名
+              %span.form_require 必須
+              = f.fields_for :user_addresses do |i|
+                = i.text_field :building_name, placeholder: "例）柳ビル103" ,class: "input_default"
+
+            -# 電話番号
+            .form_group.phone
+              = f.label :phone_number do
+                電話番号
+              %span.form_require 
+              = f.fields_for :user_addresses do |i|
+                = i.text_field :phone_number, placeholder: "例）09012345678" ,class: "input_default"
+
+          -# 登録ボタン
+          %button.btn_default{:type => "submit"} 登録
