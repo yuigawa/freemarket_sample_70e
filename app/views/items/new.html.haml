@@ -12,7 +12,7 @@
           %p.box__file-info 最大10枚までアップロードできます
           .box__file 
             = f.fields_for :item_images do |i|
-              = i.file_field :src
+              = i.file_field :src, class: "box__file--field"
             = icon('fa', 'camera')
             %p 
               ドラッグアンドドロップ 
