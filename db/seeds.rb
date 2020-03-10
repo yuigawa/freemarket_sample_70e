@@ -57,54 +57,30 @@ men_pants = men.children.create(name: "パンツ")
 men_shoes = men.children.create(name: "靴")
 men_bag = men.children.create(name: "バッグ")
 men_suits = men.children.create(name: "スーツ")
-
-
-
-
-men_tops = men.children.create(name: "トップス")
-men_jacket = men.children.create(name: "ジャケット/アウター")
-men_pants = men.children.create(name: "パンツ")
-men_shoes = men.children.create(name: "靴")
-men_bag = men.children.create(name: "バッグ")
-men_suits = men.children.create(name: "スーツ")
-m
-
-
-
-
-
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-lady_ = lady.children.create(name: "")
-
-
+men_hat = men.children.create(name: "帽子")
+men_accessory = men.children.create(name: "アクセサリー")
+men_accessories = men.children.create(name: "小物")
+men_watch = men.children.create(name: "時計")
+men_swimsuit = men.children.create(name: "水着")
+men_leg_wear = men.children.create(name: "レッグウェア")
+men_underwear = men.children.create(name: "アンダーウェア")
+men_other = men.children.create(name: "その他")
 
 #メンズ
-lady_tops.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"}, {name: "Tシャツ/カットソー(七分/長袖)"},{name: "シャツ"},{name: "ポロシャツ"},{name: "タンクトップ"},{name: "ニット/セーター"},{name: "パーカー"},{name: "カーディガン"},{name: "スウェット"},{name: "ジャージ"},{name: "ベスト"},{name: "その他"}])
-lady_pants.children.create([{name: "デニム/ジーンズ"}, {name: "ワークパンツ/カーゴパンツ"},{name: "スラックス"},{name: "チノパン"},{name: "ショートパンツ"},{name: "ペインターパンツ"},{name: "サルエルパンツ"},{name: "オーバーオール"},{name: "その他"}])
-lady_skirt.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"},{name: "その他"}])
+men_tops.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"}, {name: "Tシャツ/カットソー(七分/長袖)"},{name: "シャツ"},{name: "ポロシャツ"},{name: "タンクトップ"},{name: "ニット/セーター"},{name: "パーカー"},{name: "カーディガン"},{name: "スウェット"},{name: "ジャージ"},{name: "ベスト"},{name: "その他"}])
+men_jacket.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"},{name: "レザージャケット"},{name: "ダウンジャケット"},{name: "ライダースジャケット"},{name: "ミリタリージャケット"},{name: "ナイロンジャケット"},{name: "フライトジャケット"}
+  ,{name: "ダッフルコート"},{name: "ピーコート"},{name: "ステンカラーコート"},{name: "トレンチコート"},{name: "モッズコート"},{name: "チェスターコート"}
+  ,{name: "スタジャン"},{name: "スカジャン"},{name: "ブルゾン"},{name: "マウンテンパーカー"},{name: "ダウンベスト"}
+  ,{name: "ポンチョ"},{name: "カバーオール"},{name: "その他"}])
+men_pants.children.create([{name: "デニム/ジーンズ"}, {name: "ワークパンツ/カーゴパンツ"},{name: "スラックス"},{name: "チノパン"},{name: "ショートパンツ"},{name: "ペインターパンツ"},{name: "サルエルパンツ"},{name: "オーバーオール"},{name: "その他"}])
+men_shoes.children.create([{name: "スニーカー"}, {name: "サンダル"}, {name: "ブーツ"},{name: "モカシン"},{name: "ドレス/ビジネス"},{name: "長靴/レインシューズ"},{name: "デッキシューズ"},{name: "その他"}}])
+men_bag.children.create([{name: "ショルダーバッグ"}, {name: "トートバッグ"},{name: "ボストンバッグ"},{name: "リュック/バックパック"},{name: "ウエストポーチ"},{name: "ボディーバッグ"},{name: "ドラムバッグ"},{name: "ビジネスバッグ"},{name: "トラベルバッグ"},{name: "メッセンジャーバッグ"},{name: "エコバッグ"},{name: "その他"}])
+men_suits.children.create([{name: "スーツジャケット"}, {name: "スーツベスト"}, {name: "スラックス"},{name: "セットアップ"},{name: "その他"}])
+men_hat.children.create([{name: "キャップ"}, {name: "ハット"},{name: "ニットキャップ/ビーニー"},{name: "ハンチング/ベレー帽"},{name: "キャスケット"},{name: "サンバイザー"},{name: "その他"}])
+men_accessory.children.create([{name: "ネックレス"}, {name: "ブレスレッド"}, {name: "バングル/リストバンド"},{name: "リング"},{name: "ピアス（片耳用）"},{name: "ピアス（両耳用）"},{name: "アンクレット"},{name: "その他"}])
+men_accessories.children.create([{name: "デニム/ジーンズ"}, {name: "ワークパンツ/カーゴパンツ"},{name: "スラックス"},{name: "チノパン"},{name: "ショートパンツ"},{name: "ペインターパンツ"},{name: "サルエルパンツ"},{name: "オーバーオール"},{name: "その他"}])
+men_watch.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"},{name: "その他"}])
+men_swimsuit.children.create([{name: "デニム/ジーンズ"}, {name: "ワークパンツ/カーゴパンツ"},{name: "スラックス"},{name: "チノパン"},{name: "ショートパンツ"},{name: "ペインターパンツ"},{name: "サルエルパンツ"},{name: "オーバーオール"},{name: "その他"}])
+men_leg_wear.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"},{name: "その他"}])
+men_underwear.children.create([{name: "デニム/ジーンズ"}, {name: "ワークパンツ/カーゴパンツ"},{name: "スラックス"},{name: "チノパン"},{name: "ショートパンツ"},{name: "ペインターパンツ"},{name: "サルエルパンツ"},{name: "オーバーオール"},{name: "その他"}])
+men_other.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"},{name: "その他"}])
