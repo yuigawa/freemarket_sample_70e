@@ -305,6 +305,7 @@ car_motorcycle_6.children.create([{name: "タイヤ"},{name: "マフラー"},{na
 car_motorcycle_7 = car_motorcycle.children.create(name: "オートバイアクセサリー")
 car_motorcycle_7.children.create([{name: "ヘルメット/シールド"},{name: "バイクウエア/装備"},{name: "アクセサリー"},{name: "メンテナンス"},{name: "カタログ/マニュアル"},{name: "その他"}])
 
+
 # その他
 others = Category.create(name: "その他")
 others_1 = others.children.create(name: "まとめ売り")
