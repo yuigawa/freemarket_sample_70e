@@ -57,24 +57,21 @@
             .birthday_select_wrap
               .select_wrap
               = f.fields_for :profires do |t|
-                = t.select :birth_year,  { engineer: "Engineer"}, {}, { class: "select_default" } do
-                  %option{:value => ""} --
+                = t.select :birth_year, options_for_select(@birth_year.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
                 = icon('fa', 'angle-down', class:"icon_arrow_bottom")
                 %span 年
 
               -# 生年月日 月
               .select_wrap.select_wrap_month
               = f.fields_for :profires do |t|
-                = t.select :birth_month,  { engineer: "Engineer"}, {}, { class: "select_default" } do
-                  %option{:value => ""} --
+                = t.select :birth_mounth, options_for_select(@birth_mounth.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
                 = icon('fa', 'angle-down', class:"icon_arrow_bottom")
                 %span 月
 
               -# 生年月日 日
               .select_wrap.select_wrap_day
               = f.fields_for :profires do |t|
-                = t.select :birth_day,  { engineer: "Engineer"}, {}, { class: "select_default" } do
-                  %option{:value => ""} --
+                = t.select :birth_day, options_for_select(@birth_day.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
                 = icon('fa', 'angle-down', class:"icon_arrow_bottom")
                 %span 日
               
@@ -89,9 +86,9 @@
             .form_group.address_scrren
               = f.label :prefecture_code do
                 都道府県
-              = f.select :nickname,  { engineer: "Engineer"}, {}, { class: "select_default" } do
-                %option{:value => ""} --
-              = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+              = f.fields_for :user_addresses do |t|
+                = t.select :prefecture_code,  options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
+                = icon('fa', 'angle-down', class:"icon_arrow_bottom")
 
             -# 市区町村
             .form_group
