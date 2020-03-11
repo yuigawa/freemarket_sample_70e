@@ -62,5 +62,14 @@ $(function() {
       $('#price-box__commission').text("－");
       $('#sell-profit').text("－");     
     }
-  })
+  });
+  $('#item-name-field').on('keyup change', function() {
+    var textLength = $(this).val().length;
+    $('#name-num').text(`${textLength}/40`);
+  });
+  $('#item-description-field').on('keyup change', function() {
+    var textLength = $(this).val().length;
+    $('#description-num').text(`${textLength}/1000`);
+  });
+
 })

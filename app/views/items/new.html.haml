@@ -23,12 +23,16 @@
           .box__title
             %label 商品名
             %span.box__title--required 必須
-          = f.text_field :name, class: "box__input", placeholder: "40文字まで"
+          = f.text_field :name, class: "box__input", id: "item-name-field", placeholder: "40文字まで"
+          .box__count
+            %span.box__count--num#name-num 
           .box__margin
           .box__title
             %label 商品の説明
             %span.box__title--required 必須
-          = f.text_area :item_description, class: "box__input", placeholder: "商品の説明（必須 1,000文字以内）#{"\n"}（色、素材、重さ、定価、注意点など）#{"\n\n"}例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :item_description, class: "box__input", id: "item-description-field", placeholder: "商品の説明（必須 1,000文字以内）#{"\n"}（色、素材、重さ、定価、注意点など）#{"\n\n"}例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          .box__count
+            %span.box__count--num#description-num 
         .box
           .box__info 
             %label 商品の詳細
@@ -83,7 +87,7 @@
               %label 販売価格
               %span.box__title--required 必須
             .box__unit ￥
-            = f.number_field :price, class: "box__input input-price", id: "price-box__price", placeholder: "0" 
+            = f.number_field :price, class: "box__input input-price", id: "price-box__price", placeholder: "0", min: 300, max: 9999999
           .box__margin
           .box__sell-info
             .box__sell-info--title 販売手数料（10%）

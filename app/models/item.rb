@@ -11,6 +11,8 @@ class Item < ApplicationRecord
   validates :item_description, length: { in: 1..1000 }
 
   with_options presence: true do
+    validates :name
+    validates :item_description
     validates :category_id
     validates :size
     validates :item_condition
