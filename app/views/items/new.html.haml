@@ -31,11 +31,17 @@
         .box
           .box__info 
             %label 商品の詳細
-          .box__title
-            %label 商品名
-            %span.box__title--required 必須
-          = f.select :name, {}, {}, {class: "box__input"}
-          -# select categoryモデル未作成のため、一時的に:name
+            
+          .box__title      
+            .box-product-detail__category
+              =f.label 'カテゴリー', class: 'box-default__label'
+              %span.box__title--required 必須
+              .box-select-wrapper
+                .box-select-wrapper__box
+                  = f.select :category,   {}, {prompt: '選択してください'}, {class: "box__input"}
+                  -# = f.select :category, @category_parent_array, {}, {class: 'box-select-wrapper__box--select', id: 'parent_category'}
+
+          -#select categoryモデル未作成のため、一時的に:name
           .box__margin
           .box__title
             %label ブランド
