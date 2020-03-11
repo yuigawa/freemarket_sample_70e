@@ -48,6 +48,8 @@ body {
   .main {
     background-color: #f8f8f8;
     &__content {
+      height: 100px;
+      background-color: yellow;
       margin: 0 auto;
       width: 700px;
       &__main {
