@@ -11,9 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    binding.pry
     user = User.new(configure_sign_up_params)
-    user.save
+    if user.save
+      redirect_to root_path 
+    else
+      redirect_to new_user_registration_path, alert: "エラーメッセージ"
+    end
     logger.debug user.errors.inspect
   end
 

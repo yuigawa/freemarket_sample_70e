@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   # ニックネーム
   validates :nickname, {presence: true}
+
   # メール
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, {presence: true,  format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
