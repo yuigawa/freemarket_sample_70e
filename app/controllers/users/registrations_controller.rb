@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_sign_up_params
-    params.require(:user).permit(:nickname, :email, :password, profile_attributes: [:family_name, :first_name, :family_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day, :phone_number], user_address_attributes: [:post_code, :prefecture_code, :city, :house_number, :building_name])
+    params.require(:user).permit(:nickname, :email, :password,:password_confirmation, profile_attributes: [:family_name, :first_name, :family_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day, :phone_number], user_address_attributes: [:post_code, :prefecture_code, :city, :house_number, :building_name])
   end
 
 
