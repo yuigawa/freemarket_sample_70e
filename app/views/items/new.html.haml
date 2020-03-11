@@ -55,9 +55,14 @@
             %label 配送について
             %a.box__info--link ?
           .box__title
+            %label 配送の方法
+            %span.box__title--required 必須
+          = f.select :postage_type, options_for_select(@postage_types.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
+          .box__margin
+          .box__title
             %label 配送料の負担
             %span.box__title--required 必須
-          = f.select :postage_payer, options_for_select(@postages.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
+          = f.select :postage_payer, options_for_select(@postage_pays.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 発送元の地域
