@@ -8,10 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @profile = @user.build_profile
     @user_address = @user.build_user_address
-
   end
 
   def create
+    binding.pry
     user = User.new(configure_sign_up_params)
     user.save
     logger.debug user.errors.inspect
