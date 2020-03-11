@@ -32,8 +32,12 @@
           .box__info 
             %label 商品の詳細
           .box__title
-            %label 商品名
+            .form__group
+              =f.label :category_id do
+                カテゴリー
             %span.box__title--required 必須
+          %div
+            .select-wrap
           = f.select :name, {}, {}, {class: "box__input"}
           -# select categoryモデル未作成のため、一時的に:name
           .box__margin
