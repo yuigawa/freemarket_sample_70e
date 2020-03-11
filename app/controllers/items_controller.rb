@@ -11,8 +11,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      logger.debug @item.errors.inspect
-      render new_item_path
+      render :new
     end
   end
 
@@ -24,12 +23,16 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :item_description, :category_id, :brand_id, :size, :item_condition, :postage_payer, :prefecture_code, :estimated_shipping_date, :price, item_images_attributes: [:src]).merge(user_id: 1)
+    params.require(:item).permit(:name, :item_description, :category_id, :brand_id, :size, :item_condition, :postage_payer, :prefecture_code, :estimated_shipping_date, :price, item_images_attributes: [:src]).merge(user_id: 1, trading_status:"出品中")
   end
 
   def set_info
     @categories = Category.all
     @brands = Brand.all
     @prefectures = Prefecture.all
+    @sizes = ItemSize.all
+    @conditions = Condition.all
+    @postages = Postage.all
+    @shipping_dates = ShippingDate.all
   end
 end

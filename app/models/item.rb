@@ -1,10 +1,15 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+  belongs_to_active_hash :item_size
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :postage
+  belongs_to_active_hash :shipping_date
+
+  validates :name, length: { in: 1..40 }
+  validates :item_description, length: { in: 1..1000 }
 
   with_options presence: true do
-    validates :name
-    validates :item_description
     validates :category_id
     validates :size
     validates :item_condition
@@ -12,6 +17,7 @@ class Item < ApplicationRecord
     validates :prefecture_code
     validates :estimated_shipping_date
     validates :price
+    validates :trading_status
   end
   
   has_many :item_images
