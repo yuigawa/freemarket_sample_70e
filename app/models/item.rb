@@ -27,7 +27,7 @@ class Item < ApplicationRecord
   has_many :favorites
   belongs_to :user
   belongs_to :brand, optional: true
-  belongs_to :category
+  belongs_to :category, optional: true
 
   accepts_nested_attributes_for :item_images, allow_destroy: true
 end

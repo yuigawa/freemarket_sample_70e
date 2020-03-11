@@ -6,6 +6,7 @@
     .content 
       = form_for @item do |f|
         .box
+          = render partial: 'layouts/error', locals: { item: @item }
           .box__title
             %label 出品画像
             %span.box__title--required 必須

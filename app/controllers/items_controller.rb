@@ -4,13 +4,16 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
+
   end
 
   def create
     @item = Item.new(item_params)
+    @item.item_images.new
     if @item.save
       redirect_to root_path
     else
+      # binding.pry
       render :new
     end
   end

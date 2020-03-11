@@ -51,6 +51,15 @@ body {
         .flex-box {
           @include flex($j-content: left);
         }
+        .alert {
+          margin-bottom: 30px;
+        }
+        .alert-warning {
+          color: $base-red;
+          ul {
+            list-style: none;
+          }
+        }
         &__margin {
           height: 30px;
         }
