@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       logger.debug @item.errors.inspect
-      render :new
+      render new_item_path
     end
   end
 

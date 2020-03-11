@@ -52,5 +52,15 @@ $(function() {
     fileCount -= 1;
     selectWidth(fileCount, 5);
   });
-  
+  $('#price-box').on('keyup change', '#price-box__price', function() {
+    var price = $(this).val();
+    var commission = Math.floor(price * 0.1);
+    if (price > 0) {
+      $('#price-box__commission').text(`¥${commission}`);
+      $('#sell-profit').text(`¥${price - commission}`);
+    } else {
+      $('#price-box__commission').text("－");
+      $('#sell-profit').text("－");     
+    }
+  })
 })
