@@ -146,16 +146,17 @@
           .toppage-category__list
             = link_to items_path do
               .toppage-category__list-img
-                = image_tag(item_images_path(@item_images))
-                .toppage-category__body
-                  %h3= item.name
-                  .details
-                    %ul
-                      %li= item.price
-                      %li
-                        %i.fa.fa-star.likeIcon
-                        0
-                    %p (税込)
+                - item.item_images.each do |item_image|
+                  = image_tag "/hoge/#{item_image.src}"
+                  .toppage-category__body
+                    %h3= item.name
+                    .details
+                      %ul
+                        %li= item.price
+                        %li
+                          %i.fa.fa-star.likeIcon
+                          0
+                      %p (税込)
        
   .toppage-category
     %h2.toppage-category__title-up ピックアップブランド
@@ -168,16 +169,17 @@
           .toppage-category__list
             = link_to items_path do
               .toppage-category__list-img
-                = image_tag(item_images_path(@item_images))
-              .toppage-category__body
-                %h3= item.name
-                .details
-                  %ul
-                    %li= item.price
-                    %li
-                      %i.fa.fa-star.likeIcon
-                      0
-                  %p (税込)
+                - item.item_images.each do |item_image|
+                  = image_tag "/hoge/#{item_image.src}"
+                  .toppage-category__body
+                    %h3= item.name
+                    .details
+                      %ul
+                        %li= item.price
+                        %li
+                          %i.fa.fa-star.likeIcon
+                          0
+                      %p (税込)
        
 -# ----------------------------------                
 .appBanner3
