@@ -1,75 +1,84 @@
 .sell-wrapper
   .header
-    = link_to "#" do
+    = link_to root_path do
       = image_tag "material/logo/logo.png", size: "200x58"
   .main
     .content 
       = form_for @item do |f|
         .box
+          = render partial: 'layouts/error', locals: { item: @item }
           .box__title
             %label 出品画像
             %span.box__title--required 必須
           %p.box__file-info 最大10枚までアップロードできます
-          .box__file 
-            -# = f.file_field 
-            -# ↑item_imagesテーブル
-            = icon('fa', 'camera')
-            %p 
-              ドラッグアンドドロップ 
-              %br
-              またはクリックしてファイルをアップロード
+          .box__file
+            .box__file__img#img-box
+            .box__file__field#file-box
+              = f.fields_for :item_images do |i|
+                = i.file_field :src, class: "box__file__field--file", data: {index: i.index}
+              = icon('fa', 'camera')
+              %p 
+                クリックしてファイルをアップロード
         .box
           .box__title
             %label 商品名
             %span.box__title--required 必須
-          = f.text_field :name, class: "box__input", placeholder: "40文字まで"
+          = f.text_field :name, class: "box__input", id: "item-name-field", placeholder: "40文字まで"
+          .box__count
+            %span.box__count--num#name-num 
           .box__margin
           .box__title
             %label 商品の説明
             %span.box__title--required 必須
-          = f.text_area :item_description, class: "box__input", placeholder: "商品の説明（必須 1,000文字以内）#{"\n"}（色、素材、重さ、定価、注意点など）#{"\n\n"}例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :item_description, class: "box__input", id: "item-description-field", placeholder: "商品の説明（必須 1,000文字以内）#{"\n"}（色、素材、重さ、定価、注意点など）#{"\n\n"}例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          .box__count
+            %span.box__count--num#description-num 
         .box
           .box__info 
             %label 商品の詳細
           .box__title
-            %label 商品名
+            %label カテゴリー
             %span.box__title--required 必須
-          = f.select :name, {}, {}, {class: "box__input"}
-          -# select categoryモデル未作成のため、一時的に:name
+          = f.select :category_id, options_for_select(@categories.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label ブランド
             %span.box__title--optional 任意
-          = f.text_field :name, class: "box__input", placeholder: "例）シャネル" 
+          = f.select :brand_id, options_for_select(@brands.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 商品のサイズ
             %span.box__title--required 必須
-          = f.select :item_condition, {}, {prompt: '選択してください'}, {class: "box__input"}
+          = f.select :size, options_for_select(@sizes.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 商品の状態
             %span.box__title--required 必須
-          = f.select :item_condition, {}, {prompt: '選択してください'}, {class: "box__input"}
+          = f.select :item_condition, options_for_select(@conditions.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
         .box
           .box__info 
             %label 配送について
             %a.box__info--link ?
           .box__title
+            %label 配送の方法
+            %span.box__title--required 必須
+          = f.select :postage_type, options_for_select(@postage_types.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
+          .box__margin
+          .box__title
             %label 配送料の負担
             %span.box__title--required 必須
-          = f.select :postage_payer, {}, {prompt: '選択してください'}, {class: "box__input"}
+          = f.select :postage_payer, options_for_select(@postage_pays.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 発送元の地域
             %span.box__title--required 必須
-          = f.select :prefecture_code, {}, {prompt: '選択してください'}, {class: "box__input"}
+          = f.select :prefecture_code, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input"}
           .box__margin
           .box__title
             %label 発送までの日数
             %span.box__title--required 必須
-          = f.select :estimated_shipping_date, {}, {prompt: '選択してください'}, {class: "box__input", placeholder: "選択してください"}
-        .box
+          = f.select :estimated_shipping_date, options_for_select(@shipping_dates.map{|c|[c[:name], c[:name]]}), {prompt: '選択してください'}, {class: "box__input", placeholder: "選択してください"}
+        .box#price-box
           .box__info 
             %label 価格（¥300〜9,999,999）
             %a.box__info--link ?
@@ -78,14 +87,14 @@
               %label 販売価格
               %span.box__title--required 必須
             .box__unit ￥
-            = f.number_field :price, class: "box__input input-price", placeholder: "0" 
+            = f.number_field :price, class: "box__input input-price", id: "price-box__price", placeholder: "0", min: 300, max: 9999999
           .box__margin
           .box__sell-info
             .box__sell-info--title 販売手数料（10%）
-            .box__sell-info--price －
-          .box__sell-info#sell-profit
+            .box__sell-info--price#price-box__commission －
+          .box__sell-info#sell-profit-box
             .box__sell-info--title 販売利益
-            .box__sell-info--price －
+            .box__sell-info--price#price-box__profit#sell-profit －
           .box__btn-wrapper
             = f.submit "出品する", class: "box__btn-wrapper__submit btn"
             = link_to "#", class:"box__btn-wrapper__back btn" do
