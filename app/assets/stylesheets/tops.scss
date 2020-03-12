@@ -154,24 +154,20 @@ $non-colored-color-white:#fff;
 // --------------
 
 .header-top__footer-contents {
-  margin-left: auto;
+  height: 38px;
   display: flex;
-  &--user-login-btn{
-    color: #333;
-    line-height: 38px;
-    padding: 0 0 0 16px;
+  margin-left: 675px;
+  li.user-login-btn{
+    padding-right: 60px;
   }
-    &--new-register-btn {
-      display: flex;
-      align-items: center;
-      color: #333;
-      text-decoration: none;
-      line-height: 32px;
-    }
-    a:first-child {
-      margin-right: 10px;
-      text-decoration: none;
+  li.new-register-btn {
     
+  }
+  a:first-child {
+    line-height: 38px;
+    margin: auto;
+    text-decoration: none;
+  
   }
 }
 
@@ -487,9 +483,6 @@ $non-colored-color-white:#fff;
     padding-bottom: 80px;
 }
 
-
-  
-// ---------------------------6
 // ----------------------------
 .appBanner3 {
   background-image: image-url('bg-appBanner-pict.jpg');
