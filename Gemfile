@@ -44,6 +44,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -80,3 +81,4 @@ gem 'active_hash'
 gem 'pry-rails'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem 'payjp'
