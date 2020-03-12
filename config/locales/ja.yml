@@ -28,7 +28,7 @@ ja:
         item:
           attributes:
             base:
-              no_item_image: "画像が1枚もアップデートされていません"
+              no_item_image: "画像が1枚もアップロードされていません"
 
   date:
     abbr_day_names:
