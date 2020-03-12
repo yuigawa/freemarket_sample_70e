@@ -7,7 +7,7 @@ $(function(){
   // 子カテゴリーの表示作成
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = `<select class="box__input" id="child_category" name="item[category_id]">
+    childSelectHtml = `<select class="box__input" id="child_category" name="item[category]">
                           <option value="">選択してください</option>
                           ${insertHTML}
                        </select>`;

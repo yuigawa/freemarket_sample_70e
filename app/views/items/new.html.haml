@@ -41,7 +41,7 @@
             %label カテゴリー
             %span.box__title--required 必須
           .form__group
-            = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: 'box__input', id: 'parent_category'}
+            = f.select :category, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: 'box__input', id: 'parent_category'}
 
 
           .box__margin
