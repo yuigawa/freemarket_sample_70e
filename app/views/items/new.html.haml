@@ -16,7 +16,6 @@
             .box__file__field#file-box
               = f.fields_for :item_images do |i|
                 = i.file_field :src, class: "box__file__field--file", data: {index: i.index}
-                = i.hidden_field :src_cache
               = icon('fa', 'camera')
               %p 
                 クリックしてファイルをアップロード
