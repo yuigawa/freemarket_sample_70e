@@ -22,6 +22,8 @@ $(function() {
   }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  lastIndex = $('.box__file__field--file:last').data('index');
+  fileIndex.splice(0, lastIndex);
   let fileCount = 0;
 
   $('#file-box').on('click', '.box__file__field--file', function(e) {

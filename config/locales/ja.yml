@@ -24,6 +24,12 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        item:
+          attributes:
+            base:
+              no_item_image: "画像が1枚もアップデートされていません"
+
   date:
     abbr_day_names:
     - 日

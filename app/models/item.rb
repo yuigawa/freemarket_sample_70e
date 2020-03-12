@@ -21,6 +21,11 @@ class Item < ApplicationRecord
     validates :price
     validates :trading_status
   end
+
+  validate :require_any_item_image
+  def require_any_item_image
+    errors.add(:base, :no_item_image) if item_images.blank?
+  end
   
   has_many :item_images
   has_many :comments
