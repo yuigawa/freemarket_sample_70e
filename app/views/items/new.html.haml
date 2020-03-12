@@ -37,9 +37,19 @@
                 カテゴリー
             %span.box__title--required 必須
           %div
-            .select-wrap
-          = f.select :name, {}, {}, {class: "box__input"}
+          = f.select :item_condition, {}, {prompt: '選択してください'}, {class: "box__input"}
           -# select categoryモデル未作成のため、一時的に:name
+
+
+        .listing-form-box
+          .listing-product-detail__category
+            = f.label 'カテゴリー', class: 'listing-default__label'
+            %span.box__title--required 必須
+            .listing-select-wrapper
+              .listing-select-wrapper__box
+                = f.select :category, @category_parent_array, {}, {class: 'box__input', id: 'parent_category'}
+
+
           .box__margin
           .box__title
             %label ブランド
