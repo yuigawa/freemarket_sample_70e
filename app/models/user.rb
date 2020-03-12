@@ -21,7 +21,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile, allow_destroy: true
 
   # ニックネーム
-  validates :nickname, {presence: true}
+  validates :nickname, presence: true, length: { maximum: 6 }
 
   # メール
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
