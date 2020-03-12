@@ -7,9 +7,10 @@ class ItemsController < ApplicationController
     @item.item_images.new
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
-    @category_parent_array << parent.name
+      @category_parent_array << parent.name
+    end
   end
-end    
+    
    # 以下全て、formatはjsonのみ
    # 親カテゴリーが選択された後に動くアクション
   def get_category_children
@@ -19,7 +20,7 @@ end
 
    # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-#選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+  #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
       @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
@@ -63,5 +64,5 @@ end
     @postage_pays = PostagePay.all
     @shipping_dates = ShippingDate.all
   end
-end
+
 end
