@@ -139,48 +139,25 @@
     %h2.toppage-category__title-up ピックアップカテゴリー
     .toppage-category__box
       .head
-        =link_to do
+        = link_to root_path do
           %h3.title 新規投稿商品
       .toppage-category__lists
-        .toppage-category__list
-          = link_to "/products/3" do
-            %figure.toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product3
-              .details
-                %ul
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/2" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product2
-              .details
-                %ul
-                  %li 20000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/1" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product1
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
+        - @items.each do |item|
+          .toppage-category__list
+            = link_to items_path do
+              .toppage-category__list-img
+                - item.item_images.each do |item_image|
+                  = image_tag "/hoge/#{item_image.src}"
+                  .toppage-category__body
+                    %h3= item.name
+                    .details
+                      %ul
+                        %li= item.price
+                        %li
+                          %i.fa.fa-star.likeIcon
+                          0
+                      %p (税込)
+       
   .toppage-category
     %h2.toppage-category__title-up ピックアップブランド
     .toppage-category__box
@@ -188,45 +165,22 @@
         =link_to do
           %h3.title アーカイバ
       .toppage-category__lists
-        .toppage-category__list
-          = link_to "/products/3" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product3
-              .details
-                %ul
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/2" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product2
-              .details
-                %ul
-                  %li 20000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/1" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product1
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
+        - @items.each do |item|
+          .toppage-category__list
+            = link_to items_path do
+              .toppage-category__list-img
+                - item.item_images.each do |item_image|
+                  = image_tag "/hoge/#{item_image.src}"
+                  .toppage-category__body
+                    %h3= item.name
+                    .details
+                      %ul
+                        %li= item.price
+                        %li
+                          %i.fa.fa-star.likeIcon
+                          0
+                      %p (税込)
+       
 -# ----------------------------------                
 .appBanner3
   .inner
