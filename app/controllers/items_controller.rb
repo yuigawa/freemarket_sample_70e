@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @category_parent_array = ["選択してください"]
+    @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
     @category_parent_array << parent.name
   end
@@ -27,5 +27,10 @@ end
   end
 
   def edit
-  end
+    @child_categories = Category.where(ancestry: params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+end
 end
