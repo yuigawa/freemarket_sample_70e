@@ -96,6 +96,7 @@ $non-colored-color-white:#fff;
   &__menu {
     position: relative;
     display: flex;
+    width: 100%;
   }
   &__menu-list {
     display: flex;
@@ -156,7 +157,7 @@ $non-colored-color-white:#fff;
 .header-top__footer-contents {
   height: 38px;
   display: flex;
-  margin-left: 675px;
+  margin-left: auto;
   li.user-login-btn{
     padding-right: 60px;
   }
