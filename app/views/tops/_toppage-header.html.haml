@@ -1,0 +1,59 @@
+.toppage-header
+  .toppage-header-top
+    .toppage-header-top__main
+      %h1.toppage-header-top__icon
+        = link_to image_tag("logo.png"), root_path
+      .toppage-header-top__header-search
+        = form_with url: root_path, local: true do |f|
+          = f.text_field :name, placeholder: "キーワードから探す",class: 'searchInput .searchBox--input'
+          %button{type: "submit", class:'btn'}
+            .searchBox__icon
+              = image_tag "icon-search 1.png"
+          %input{name: "authenticity_token", type: "hidden", value: ""}/
+          
+    .header-footer
+      %ul.header-footer__menu
+        %li.header-footer__menu-list.header-footer__menu-list--first
+          = link_to 'カテゴリー', '#' , class: "a catBtn"
+          .pull-down.displayNone
+            %ul.pull-down-menu
+              %li.pull-down-menu__category--item
+                = link_to 'レディース', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'メンズ', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'ベビー・キッズ', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'インテリア・住まい・小物', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to '本・音楽・ゲーム', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'おもちゃ・ホビー・グッズ', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'コスメ・香水・美容', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to '家電・スマホ・カメラ', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'スポーツ・レジャー', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'ハンドメイド', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'チケット', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to '自動車・オートバイ', '#' , class: "a "
+              %li.pull-down-menu__category--item
+                = link_to 'その他', '#' , class: "a "
+        %li.header-footer__menu-list
+          = link_to 'ブランド', '#' , class: "a brandBtn"
+          %ul.brandsPulldown.displayNone
+        %ul.header-top__footer-contents
+          - if user_signed_in?
+            %li.user-login-btn
+              = link_to current_user.nickname, user_path(current_user)
+            %li.new-register-btn
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+          - else
+            %li.user-login-btn
+              = link_to "ログイン", new_user_session_path
+            %li.new-register-btn
+              = link_to "新規登録", new_user_registration_path
