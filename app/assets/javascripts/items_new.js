@@ -1,6 +1,6 @@
 $(function() {
   function buildImg(index, url) {
-    const html = `<div class="box__file__img__wrapper" data-index="${index}">
+    var html = `<div class="box__file__img__wrapper" data-index="${index}">
                     <img data-index="${index}" src="${url}">
                     <div class="box__file__img__wrapper__delete" data-index="${index}">削除する</div>
                   </div>`;
@@ -8,7 +8,7 @@ $(function() {
   }
 
   function buildFileField(index) {
-    const html = `<input class="box__file__field--file" data-index="${index}" type="file" name="item[item_images_attributes][${index}][src]" id="item_item_images_attributes_${index}_src">`;
+    var html = `<input class="box__file__field--file" data-index="${index}" type="file" name="item[item_images_attributes][${index}][src]" id="item_item_images_attributes_${index}_src">`;
 
     return html;
   }
