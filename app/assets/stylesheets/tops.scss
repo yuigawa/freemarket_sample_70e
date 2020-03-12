@@ -444,10 +444,11 @@ $non-colored-color-white:#fff;
       left: 0;
       right: 0;
       bottom: 0;
+      height: 180px;
       width: 100%;
+      max-width: 100%; 
       z-index: auto;
-      height: 150px;
-      object-fit: cover;
+      object-fit: contain;
     }
     &__body {
       background-color: $non-colored-color-white;
