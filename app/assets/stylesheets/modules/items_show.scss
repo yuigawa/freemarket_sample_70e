@@ -47,9 +47,8 @@ body {
   
   .main {
     background-color: #f8f8f8;
+    margin-bottom: 30px;
     &__content {
-      height: 100px;
-      background-color: yellow;
       margin: 0 auto;
       width: 700px;
       &__main {
@@ -228,3 +227,36 @@ body {
     }
   }
 }
+
+.bttn {
+  padding:8px 20px;
+  font-size: 14px;
+  border: 2px solid rgb(212, 96, 42);
+  color: rgb(238, 156, 34);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+  width:100%;
+&:hover {
+  border-color: lighten(rgb(47, 211, 96), 15%);
+  color: lighten(rgb(11, 173, 60), 15%);
+}
+}
+
+.button {
+  padding:8px 20px;
+  font-size: 14px;
+  border: 2px solid rgb(212, 96, 42);
+  color: rgb(238, 156, 34);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+  width:170px;
+&:hover {
+  border-color: lighten(rgb(47, 211, 96), 15%);
+  color: lighten(rgb(11, 173, 60), 15%);
+}
+}
+

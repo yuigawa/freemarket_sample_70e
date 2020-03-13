@@ -1,58 +1,6 @@
 .toppage-header
-  .toppage-header-top
-    .toppage-header-top__main
-      %h1.toppage-header-top__icon
-        = link_to image_tag "logo.png"
-      .toppage-header-top__header-search
-        = form_with url: root_path, local: true do |f|
-          = f.text_field :name, placeholder: "キーワードから探す",class: 'searchInput .searchBox--input'
-          %button{type: "submit", class:'btn'}
-            .searchBox__icon
-              = image_tag "icon-search 1.png"
-          %input{name: "authenticity_token", type: "hidden", value: ""}/
-          
-    .header-footer
-      %ul.header-footer__menu
-        %li.header-footer__menu-list.header-footer__menu-list--first
-          = link_to 'カテゴリー', '#' , class: "a catBtn"
-          .pull-down.displayNone
-            %ul.pull-down-menu
-              %li.pull-down-menu__category--item
-                = link_to 'レディース', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'メンズ', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'ベビー・キッズ', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'インテリア・住まい・小物', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to '本・音楽・ゲーム', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'おもちゃ・ホビー・グッズ', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'コスメ・香水・美容', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to '家電・スマホ・カメラ', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'スポーツ・レジャー', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'ハンドメイド', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'チケット', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to '自動車・オートバイ', '#' , class: "a "
-              %li.pull-down-menu__category--item
-                = link_to 'その他', '#' , class: "a "
-        %li.header-footer__menu-list
-          = link_to 'ブランド', '#' , class: "a brandBtn"
-          %ul.brandsPulldown.displayNone
-      %ul.header-top__footer-contents
-        %li.header-top__footer-contents--user-login-btn
-          = link_to 'ログイン', '#' , class: "a "
-        %li.header-top__footer-contents--new-register-btn
-          = link_to '新規会員登録', '#' , class: "a "
-
-    -# --------------------------------------      
+  = render partial: 'toppage-header'
+-# ----------------------------------
 .toppage-main
   .toppage-main__contents-first
     .toppage-main__contents-first-content
@@ -139,48 +87,25 @@
     %h2.toppage-category__title-up ピックアップカテゴリー
     .toppage-category__box
       .head
-        =link_to do
+        = link_to root_path do
           %h3.title 新規投稿商品
       .toppage-category__lists
-        .toppage-category__list
-          = link_to "/products/3" do
-            %figure.toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product3
-              .details
-                %ul
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/2" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product2
-              .details
-                %ul
-                  %li 20000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/1" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product1
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
+        - @items.each do |item|
+          .toppage-category__list
+            = link_to item_path(item.id) do
+              .toppage-category__list-img
+                - item.item_images.each do |item_image|
+                  = image_tag "#{item_image.src}"
+                  .toppage-category__body
+                    %h3= item.name
+                    .details
+                      %ul
+                        %li= item.price
+                        %li
+                          %i.fa.fa-star.likeIcon
+                          0
+                      %p (税込)
+       
   .toppage-category
     %h2.toppage-category__title-up ピックアップブランド
     .toppage-category__box
@@ -188,80 +113,22 @@
         =link_to do
           %h3.title アーカイバ
       .toppage-category__lists
-        .toppage-category__list
-          = link_to "/products/3" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product3
-              .details
-                %ul
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/2" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product2
-              .details
-                %ul
-                  %li 20000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
-        .toppage-category__list
-          = link_to "/products/1" do
-            .toppage-category__list-img
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .toppage-category__body
-              %h3.name product1
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p (税込)
+        - @items.each do |item|
+          .toppage-category__list
+            = link_to item_path(item.id) do
+              .toppage-category__list-img
+                - item.item_images.each do |item_image|
+                  = image_tag "#{item_image.src}"
+                  .toppage-category__body
+                    %h3= item.name
+                    .details
+                      %ul
+                        %li= item.price
+                        %li
+                          %i.fa.fa-star.likeIcon
+                          0
+                      %p (税込)
+       
 -# ----------------------------------                
-.appBanner3
-  .inner
-    %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
-    %p.inner__text 今すぐ無料ダウンロード！
-    .inner__icon
-      =link_to image_tag 'http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', class: 'Btn'
-      =link_to image_tag 'http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg', class: 'Btn'
--# ----------------------------------
-.toppage-footer
-  %ul.toppage-footer__contents
-    %li.toppage-footer__content
-      %h2.toppage-footer__content-title FURIMAについて
-      %ul
-        %li= link_to '会社概要（運営会社）', '#' , class: "a "
-        %li= link_to 'プライバシーポリシー', '#' , class: "a "
-        %li= link_to 'FURIMA利用規約', '#' , class: "a "
-        %li= link_to 'ポイントに関する特約', '#' , class: "a "
-    %li.toppage-footer__content
-      %h2.toppage-footer__content-title FURIMAを見る 
-      %ul
-        %li= link_to 'カテゴリー一覧', '#' , class: "a "
-        %li= link_to 'ブランド一覧', '#' , class: "a "
-    %li.toppage-footer__content
-      %h2.toppage-footer__content-title ヘルプ＆ガイド
-      %ul
-        %li= link_to 'FURIMAガイド', '#' , class: "a "
-        %li= link_to 'FURIMAロゴ利用ガイドライン', '#' , class: "a "
-        %li= link_to 'お知らせ', '#' , class: "a "
-  .toppage-footer__logo
-    = link_to image_tag 'logo-white.png', class: 'toppage-footer__logo'
-  %p © FURIMA
-= link_to do
-  .purchaseBtn
-    %span.purchaseBtn__text 出品する
-    = image_tag 'icon_camera.png', class: 'img purchaseBtn__icon'
-
-
+-# .appBanner3
+= render partial: 'toppage-footer'
