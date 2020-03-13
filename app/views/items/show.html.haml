@@ -9,7 +9,7 @@
         = icon('fa', 'angle-right')
       %li 
         = link_to "#" do
-          メンズ
+          = @item.category.parent.parent.name
       %li
         = icon('fa', 'angle-right')
       %li 
@@ -88,6 +88,13 @@
               %tr
                 %th 発送日の目安
                 %td 1-2日で発送
+          .main__content__main__item-box__1
+            - if user_signed_in? && current_user.id == @item.user_id
+              = link_to '編集', edit_item_path(@item.id), class: 'button'
+              = link_to "削除", item_path(@item.id), method: :delete, data: { confirm: "本当に削除しますか？" } , class: 'button'
+            - else 
+              = link_to '購入画面に進む', edit_item_path(@item.iid), class: 'bttn'
+     
           .main__content__main__item-box__option
             %ul.main__content__main__item-box__option__like
               %li.main__content__main__item-box__option__like__btn

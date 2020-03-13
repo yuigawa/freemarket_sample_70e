@@ -92,10 +92,10 @@
       .toppage-category__lists
         - @items.each do |item|
           .toppage-category__list
-            = link_to items_path do
+            = link_to item_path(item.id) do
               .toppage-category__list-img
                 - item.item_images.each do |item_image|
-                  = image_tag "/hoge/#{item_image.src}"
+                  = image_tag "#{item_image.src}"
                   .toppage-category__body
                     %h3= item.name
                     .details
@@ -115,10 +115,10 @@
       .toppage-category__lists
         - @items.each do |item|
           .toppage-category__list
-            = link_to items_path do
+            = link_to item_path(item.id) do
               .toppage-category__list-img
                 - item.item_images.each do |item_image|
-                  = image_tag "/hoge/#{item_image.src}"
+                  = image_tag "#{item_image.src}"
                   .toppage-category__body
                     %h3= item.name
                     .details

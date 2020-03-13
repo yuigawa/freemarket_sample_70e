@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+  
 
   def edit
     @child_categories = Category.where(ancestry: params[:keyword])
@@ -47,6 +48,12 @@ class ItemsController < ApplicationController
       format.html
       format.json
     end
+  end
+
+  def destroy
+    @item = Item.find_by(id: params[:id])
+    @item.destroy
+    redirect_to root_path
   end
 
   private
