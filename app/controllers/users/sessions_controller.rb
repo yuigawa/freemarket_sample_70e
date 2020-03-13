@@ -5,6 +5,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def create
+    
   end
 
   def destroy
