@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -68,5 +69,6 @@ class ItemsController < ApplicationController
     @postage_pays = PostagePay.all
     @shipping_dates = ShippingDate.all
   end
+
 
 end

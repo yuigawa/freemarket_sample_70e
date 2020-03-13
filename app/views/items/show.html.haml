@@ -24,7 +24,7 @@
         = icon('fa', 'angle-right')
       %li 
         %p
-          ダンディジャケット
+          = @item.name
   .main
     .main__content
       .main__content__main
@@ -61,13 +61,13 @@
                 %th カテゴリー
                 %td 
                   = link_to "#" do 
-                    メンズ 
+                    = @item.category.parent.parent.name
                     %br
                   = link_to "#" do
-                    ジャケット/アウター
+                    = @item.category.parent.name
                     %br
                   = link_to "#" do
-                    ハニカムジャケット
+                    = @item.category.name
               %tr
                 %th ブランド
                 %td 
