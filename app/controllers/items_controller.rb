@@ -5,13 +5,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @category_parent_array = []
-    Category.where(ancestry: nil).each do |parent|
-      hash = {}
-      hash[:id] = parent.id
-      hash[:name] = parent.name
-      @category_parent_array << hash
-    end
   end
     
    # 以下全て、formatはjsonのみ
@@ -77,6 +70,13 @@ class ItemsController < ApplicationController
     @postage_types = PostageTy.all
     @postage_pays = PostagePay.all
     @shipping_dates = ShippingDate.all
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      hash = {}
+      hash[:id] = parent.id
+      hash[:name] = parent.name
+      @category_parent_array << hash
+    end
   end
 
 
