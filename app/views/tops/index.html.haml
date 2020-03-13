@@ -118,7 +118,7 @@
             = link_to item_path(item.id) do
               .toppage-category__list-img
                 - item.item_images.each do |item_image|
-                  = image_tag "#{item_image.src}"
+                  = image_tag "/uploads/#{item_image.src}"
                   .toppage-category__body
                     %h3= item.name
                     .details
