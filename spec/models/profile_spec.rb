@@ -57,7 +57,5 @@ describe Profile do
       profile.valid?
       expect(profile.errors[:birth_day]).to include("can't be blank")
     end
-
-
   end
 end
