@@ -1,2 +1,91 @@
-%h1 Cards#new
-%p Find me in app/views/cards/new.html.haml
+/* トップページのヘッダーテンプレ */
+.toppage-header
+  = render partial: 'tops/toppage-header'
+
+/* マイページのnavbarのコピペ */
+.mypage-wrapper
+  %nav.brand-wrapper
+    %ul
+      %li 
+        = link_to "#" do
+          FURIMA
+      %li
+        = icon('fa', 'angle-right')
+      %li 
+        %p
+          お支払い情報登録
+
+/* マイページのsidebar部分テンプレ */
+.mypage
+  .mymain
+    = render partial: 'users/mypage-side'
+
+    .mycard
+      %h1 クレジットカード情報入力
+      .right-top
+        = form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+          .cardlist
+            %label カード番号
+            %span 必須
+            %br
+          = text_field_tag "cardnumber", "", class: "cardnumber", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+          %br
+          %ul
+            %li
+              = image_tag 'creditcard/visa.svg'
+            %li
+              = image_tag 'creditcard/saison-card.svg'
+            %li
+              = image_tag 'creditcard/master-card.svg'
+            %li
+              = image_tag 'creditcard/jcb.svg'
+            %li
+              = image_tag 'creditcard/discover.svg'
+            %li
+              = image_tag 'creditcard/dinersclub.svg'
+            %li
+              = image_tag 'creditcard/american_express.svg'
+          .datelist
+            %label 有効期限
+            %span 必須
+            %br
+          .selectdate
+            %select#exp_month{name: "exp_month", type: "text"}
+              %option{value: ""} --
+              %option{value: "1"}01
+              %option{value: "2"}02
+              %option{value: "3"}03
+              %option{value: "4"}04
+              %option{value: "5"}05
+              %option{value: "6"}06
+              %option{value: "7"}07
+              %option{value: "8"}08
+              %option{value: "9"}09
+              %option{value: "10"}10
+              %option{value: "11"}11
+              %option{value: "12"}12
+            %p 月/
+            %select#exp_year{name: "exp_year", type: "text"}
+              %option{value: ""} --
+              %option{value: "2019"}19
+              %option{value: "2020"}20
+              %option{value: "2021"}21
+              %option{value: "2022"}22
+              %option{value: "2023"}23
+              %option{value: "2024"}24
+              %option{value: "2025"}25
+              %option{value: "2026"}26
+              %option{value: "2027"}27
+              %option{value: "2028"}28
+              %option{value: "2029"}29
+            %p 年
+            %br
+          .codelist
+            %label セキュリティコード
+            %span 必須
+            %br
+          = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+          #card_token
+            = submit_tag "追加する", id: "token_submit"
+  /* トップページのフッダーテンプレ */
+= render partial: 'tops/toppage-footer'
