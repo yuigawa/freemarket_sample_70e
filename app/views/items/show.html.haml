@@ -14,12 +14,12 @@
         = icon('fa', 'angle-right')
       %li 
         = link_to "#" do
-          ジャケット/アウター
+          = @item.category.parent.name
       %li
         = icon('fa', 'angle-right')
       %li 
         = link_to "#" do
-          ハニカムジャケット
+          = @item.category.name
       %li
         = icon('fa', 'angle-right')
       %li 
@@ -30,7 +30,7 @@
       .main__content__main
         .main__content__main__item-box
           %h2.main__content__main__item-box__name
-            ダンディジャケット
+            = @item.name
           .main__content__main__item-box__image
             %ul.main__content__main__item-box__image__images
               %li.main__content__main__item-box__image__images__image
@@ -44,23 +44,25 @@
                     = image_tag "/hoge/product1-4.jpg"
           .main__content__main__item-box__price
             %span.main__content__main__item-box__price-price
-              ¥20000
+              %span
+                ¥           
+              =@item.price
             .main__content__main__item-box__price-detail
               %span
                 (税込)
               %span
                 送料込み
           .main__content__main__item-box__detail
-            ダンディジャケット
+            = @item.name
           .main__content__main__item-box__table
             %table 
               %tr
                 %th 出品者
-                %td Hoge
+                %td=@user.nickname
               %tr
                 %th カテゴリー
-                %td 
-                  = link_to "#" do 
+                %td
+                  = link_to "#" do
                     = @item.category.parent.parent.name
                     %br
                   = link_to "#" do
@@ -73,21 +75,19 @@
                 %td 
               %tr
                 %th 商品のサイズ
-                %td 
+                %td=@item.size
               %tr
                 %th 商品の状態
-                %td 新品/未使用
+                %td= @item.item_condition
               %tr
                 %th 配送料の負担
-                %td 着払い（購入者負担）
+                %td=@item.postage_payer
               %tr
                 %th 発送元の地域
-                %td  
-                  = link_to "#" do
-                    青森県
+                %td=@item.prefecture_code
               %tr
                 %th 発送日の目安
-                %td 1-2日で発送
+                %td=@item.estimated_shipping_date
           .main__content__main__item-box__1
             - if user_signed_in? && current_user.id == @item.user_id
               = link_to '編集', edit_item_path(@item.id), class: 'button'
