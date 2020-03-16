@@ -42,8 +42,6 @@ class CardsController < ApplicationController
 
   def set_card
     @card = Card.where(user_id: current_user.id).first
-    unless @card.present?
-      redirect_to action: "new"
-    end
+    redirect_to action: "new" unless @card.present?
   end
 end
