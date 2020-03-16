@@ -42,8 +42,9 @@
                    
           .main__content__main__item-box__price
             %span.main__content__main__item-box__price-price
-              ¥
-              = @item.price
+              %span
+                ¥           
+              =@item.price
             .main__content__main__item-box__price-detail
               %span
                 (税込)
@@ -55,10 +56,10 @@
             %table 
               %tr
                 %th 出品者
-                %td= @item.user.nickname
+                %td=@user.nickname
               %tr
                 %th カテゴリー
-                %td 
+                %td
                   = link_to "#" do
                     = @item.category.parent.parent.name
                     %br
@@ -72,21 +73,19 @@
                 %td= @item.brand.name if @item.brand
               %tr
                 %th 商品のサイズ
-                %td= @item.size
+                %td=@item.size
               %tr
                 %th 商品の状態
-                %td= @item.item_condition 
+                %td= @item.item_condition
               %tr
                 %th 配送料の負担
-                %td= @item.postage_payer
+                %td=@item.postage_payer
               %tr
                 %th 発送元の地域
-                %td  
-                  = link_to "#" do
-                    = @item.prefecture_code
+                %td=@item.prefecture_code
               %tr
                 %th 発送日の目安
-                %td= @item.estimated_shipping_date
+                %td=@item.estimated_shipping_date
           .main__content__main__item-box__1
             - if user_signed_in? && current_user.id == @item.user_id
               = link_to '編集', edit_item_path(@item.id), class: 'button'
