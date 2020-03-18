@@ -1,10 +1,27 @@
 require 'rails_helper'
 describe Item do
   describe '#create' do
-  it "is invalid without category_id" do
-    item = Item.new(name: "", item_description: "TEST", category_id: "", brand_id: 1, size: "TEST", item_condition: "TEST", postage_type: "TEST", postage_payer: "TEST", prefecture_code: "TEST", estimated_shipping_date: "TEST", price: 300, item_images_attributes: {src: "image.png"} )
+  it "is invalid without name" do
+    item = build(:item, name: "")
     item.valid?
-    expect(item.errors[:category_id]).to include("can't be blank")
+    expect(item.errors[:name]).to include("は1文字以上で入力してください")
+  end
+
+  it "is invalid with a name that has more than 41 characters" do
+    item = build(:item, name: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    item.valid?
+    expect(item.errors[:name]).to include("は40文字以内で入力してください")
+  end
+
+  it "is valid with a name that has less than 40 characters" do
+    item = build(:item, name: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    expect(item).to be_valid
+  end
+
+  it "is invalid without category_id" do
+    item = build(:item, category_id: "")
+    item.valid?
+    expect(item.errors[:category_id]).to include("を入力してください")
   end
 
   end

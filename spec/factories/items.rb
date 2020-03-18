@@ -10,7 +10,11 @@ FactoryBot.define do
     postage_payer     {"購入者負担"}
     prefecture_code   {"北海道"}
     estimated_shipping_date {"即日"}
-    price
-
+    price             {"000"}
+    trading_status    {"出品中"}
+    association :user
+    factory :item_image do
+      src {"image.png"}
+    end
   end
 end
