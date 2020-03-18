@@ -54,16 +54,14 @@
           margin: 24px 0 0;
         }
         .address_scrren{
-          .select_default{
-          width: 100%;
-          background-color: white;
-          border: 1px solid #ccc;
-            i{
-              right: 150px;
-            }
+          select {
+            height: 48px;
+            width: 100%;
+            margin: 8px 0 0;
+            background-color: white;
+            border: 1px solid #ccc;
           }
         }
-
       }
     }
   }
@@ -91,11 +89,18 @@
     display: flex;
     width: 100%;
     line-height: 55px;
+    select {
+      height: 48px;
+      width: 25%;
+      margin-top: 8px;
+      background-color: white;
+      border: 1px solid #ccc;
+    }
     span{
       color: black;
-    }
-    i{
-      line-height: 55px;
+      width: 10%;
+      text-align: center;
+      margin-top: 8px;
     }
   }
   
