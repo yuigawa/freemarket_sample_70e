@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     user = User.new(configure_sign_up_params)
     if user.save
-      redirect_to root_path 
+      redirect_to sign_in user
     else
       redirect_to new_user_registration_path, alert: "エラーメッセージ"
     end
