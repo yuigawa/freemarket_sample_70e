@@ -122,7 +122,7 @@
             .form_group
               = f.label :building_name do
                 マンションやビル名
-              %span.form_require 必須
+              %span.form_require 
               = f.fields_for :user_address do |i|
                 = i.text_field :building_name, placeholder: "例）柳ビル103" ,class: "input_default"
 

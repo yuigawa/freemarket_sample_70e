@@ -1,67 +1,147 @@
-.buy-exhibition_header
-  .buy-exhibition_header-body
-    .buy-exhibition_header-body-icon
-      = image_tag "material/logo/logo.png", class: "icon_fmarket"
-.main-flame
-  .main-flame-all
-    .main-flame-all-box
-      .main-flame-all-box-buy_text
-        購入内容の確認
-      .main-flame-all-box-buy_content
-        .main-flame-all-box-buy_content-item
-          .main-flame-all-box-buy_content-item_box
-            .main-flame-all-box-buy_content-item_box-image
-            .main-flame-all-box-buy_content-item_box-detail
-              .main-flame-all-box-buy_content-item_box-detail_name
-                商品
-              .main-flame-all-box-buy_content-item_box-detail_price
-                ¥1,600 （税込）送料込み
-      .main-flame-all-box-choice
-        .main-flame-all-box-choice-flame
-          .main-flame-all-box-choice-flame-price
-            .main-flame-all-box-choice-flame-price_box
-              .main-flame-all-box-choice-flame-price_box_text
-                支払い金額
-              .main-flame-all-box-choice-flame-price_box_number
-                ¥1,600
-            .main-flame-all-box-choice-flame-price_point
-              = icon('far', 'square')
-              ポイントを使用 (所持ポイント: P300)
+.edit
+  .sell-wrapper
+    .header
+      = link_to root_path do
+        = image_tag "material/logo/logo.png", size: "200x58"
+    .main
+      .content 
+        = form_for @item do |f|
+          .box
+            = render partial: 'layouts/error', locals: { item: @item }
+            .box__title
+              %label 出品画像
+              %span.box__title--required 必須
+            %p.box__file-info 最大10枚までアップロードできます
+            .box__file
+              .box__file__img#img-box
+                - if @item.persisted?
+                  - @item.item_images.each_with_index do |image, index|
+                    .box__file__img__wrapper{data:{index: index}}
+                      = image_tag "#{image.src}", data:{index: index} 
+                      .box__file__img__wrapper__delete{data:{index: index}}
+                        削除する
+              .box__file__field#file-box{data:{edit: "edit"}}
+                = f.fields_for :item_images do |i|
+                  - if @item.persisted?
+                    = i.file_field :src, class: "box__file__field--file", id: "item_item_images_attributes_#{i.index}_src", data: {index: i.index}, name: "item[item_images_attributes][#{i.index}][src]", style: "display:none"
+                    = i.check_box :_destroy, data:{ index: i.index }, style: "display:none", class: "box__file__field--checkbox"
+                = icon('fa', 'camera')
 
-          .main-flame-all-box-choice-payment
-            .main-flame-all-box-choice-payment-text
-              支払い方法
-            .main-flame-all-box-choice-payment-registration
-              = link_to "#", class: "registration_link" do
-                = icon('fas', 'plus-circle')
-                登録してください
 
-          .main-flame-all-box-choice-delivery
-            .main-flame-all-box-choice-delivery-text
-              配送先
-            .main-flame-all-box-choice-delivery-registration
-              = link_to "#", class: "registration_link" do
-                = icon('fas', 'plus-circle')
-                登録してください
+                
+                %p 
+                  クリックしてファイルをアップロード
+          .box
+            .box__title
+              %label 商品名
+              %span.box__title--required 必須
+            = f.text_field :name, class: "box__input", id: "item-name-field", placeholder: "40文字まで"
+            .box__count
+              %span.box__count--num#name-num 
+            .box__margin
+            .box__title
+              %label 商品の説明
+              %span.box__title--required 必須
+            = f.text_area :item_description, class: "box__input", id: "item-description-field", placeholder: "商品の説明（必須 1,000文字以内）#{"\n"}（色、素材、重さ、定価、注意点など）#{"\n\n"}例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+            .box__count
+              %span.box__count--num#description-num 
+          .box
+            .box__info 
+              %label 商品の詳細
 
-          .main-flame-all-box-choice-buy
-            .main-flame-all-box-choice-buy-button
-              = link_to '購入する', '#', class: 'button'
+            .box__title
+              %label カテゴリー
+              %span.box__title--required 必須
+            .form__group
+              -# = f.select :category, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: 'box__input', id: 'parent_category'}
+                -# = f.fields_for :category, @category do |category|
+              = f.select :category, options_for_select(Category.where(ancestry: nil).map{|c|[c[:name], c[:id],{}]}, @item.category.parent.parent.id), {}, {class: 'box__input', id: 'parent_category'}
+              = f.select :category, options_for_select(@item.category.parent.parent.children.map{|c|[c[:name], c[:id],{}]}, @item.category.parent.id), {}, {class: 'box__input', id: 'child_category'}
+              = f.select :category_id, options_for_select(@item.category.parent.children.map{|c|[c[:name], c[:id],{}]}, @item.category.id), {}, {class: 'box__input', id: 'grandchild_category'}
 
-.buy-exhibition_footer
-  .buy-exhibition_footer-flame
-    .buy-exhibition_footer-flame-body
-      .buy-exhibition_footer-flame-body_text
-        .buy-exhibition_footer-flame-body_text-privacy
-          = link_to "プライバシーポリシー", "#", class: "privacy_link"
-        .buy-exhibition_footer-flame-body_text-terms
-          = link_to "利用規約", "#", class: "terms_link"
-        .buy-exhibition_footer-flame-body_text-specific
-          = link_to "特定商取引に関する表記", "#", class: "specific_link"
-      .buy-exhibition_footer-flame-body_logo
-        .buy-exhibition_footer-flame-body_logo_content
-          = link_to "#" do
-            = image_tag "material/logo/logo-white.png", class: "icon_logo_fmarket"
 
-        .buy-exhibition_footer-flame-body_logo_text
-          © FURIMA, Inc.
+            .box__margin
+            .box__title
+              %label ブランド
+              %span.box__title--optional 任意
+            = f.select :brand_id, options_for_select(@brands.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: "box__input"}
+            .box__margin
+            .box__title
+              %label 商品のサイズ
+              %span.box__title--required 必須
+            = f.select :size, options_for_select(ItemSize.all.map{|c|[c[:name], c[:name]]},@item.size), {prompt: '選択してください'}, {class: "box__input"}
+            .box__margin
+            .box__title
+              %label 商品の状態
+              %span.box__title--required 必須
+            = f.select :item_condition, options_for_select(Condition.all.map{|c|[c[:name], c[:name]]},@item.item_condition), {prompt: '選択してください'}, {class: "box__input"}
+          .box
+            .box__info 
+              %label 配送について
+              %a.box__info--link ?
+            .box__title
+              %label 配送の方法
+              %span.box__title--required 必須
+            = f.select :postage_type, options_for_select(PostageTy.all.map{|c|[c[:name], c[:name]]}, @item.postage_type), {prompt: '選択してください'}, {class: "box__input"}
+            .box__margin
+            .box__title
+              %label 配送料の負担
+              %span.box__title--required 必須
+            = f.select :postage_payer, options_for_select(PostagePay.all.map{|c|[c[:name], c[:name]]},@item.postage_type), {prompt: '選択してください'}, {class: "box__input"}
+            .box__margin
+            .box__title
+              %label 発送元の地域
+              %span.box__title--required 必須
+            = f.select :prefecture_code, options_for_select(Prefecture.all.map{|c|[c[:name], c[:name]]},@item.prefecture_code), {prompt: '選択してください'}, {class: "box__input"}
+            .box__margin
+            .box__title
+              %label 発送までの日数
+              %span.box__title--required 必須
+            = f.select :estimated_shipping_date, options_for_select(ShippingDate.all.map{|c|[c[:name], c[:name]]},@item.estimated_shipping_date), {prompt: '選択してください'}, {class: "box__input", placeholder: "選択してください"}
+          .box#price-box
+            .box__info 
+              %label 価格（¥300〜9,999,999）
+              %a.box__info--link ?
+            .flex-box
+              .box__title
+                %label 販売価格
+                %span.box__title--required 必須
+              .box__unit ￥
+              = f.number_field :price, class: "box__input input-price", id: "price-box__price", placeholder: "0", min: 300, max: 9999999
+            .box__margin
+            .box__sell-info
+              .box__sell-info--title 販売手数料（10%）
+              .box__sell-info--price#price-box__commission －
+            .box__sell-info#sell-profit-box
+              .box__sell-info--title 販売利益
+              .box__sell-info--price#price-box__profit#sell-profit －
+            .box__btn-wrapper
+              = f.submit "変更する", class: "box__btn-wrapper__submit btn"
+              = link_to "#", class:"box__btn-wrapper__back btn" do
+                戻る
+            %p.box__attention
+              禁止されている
+              = link_to "行為" 
+              および
+              = link_to "出品物" 
+              を必ずご確認ください。
+              = link_to "偽ブランド品" 
+              や
+              = link_to "盗品物" 
+              などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+              = link_to "加盟店規約" 
+              に同意したことになります。
+              
+    .footer
+      %ul 
+        %li
+          = link_to "プライバシーポリシー" 
+        %li
+          = link_to "メルカリ利用規約" 
+        %li
+          = link_to "特定商取引に関する表記" 
+      = link_to "#", class: "footer--logo" do
+        = image_tag "material/logo/logo-gray.png", size: "150x44"
+      %p &copy; FRIMA, Inc.
+            
+
