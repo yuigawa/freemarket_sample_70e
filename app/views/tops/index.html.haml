@@ -94,17 +94,16 @@
           .toppage-category__list
             = link_to item_path(item.id) do
               .toppage-category__list-img
-                - item.item_images.each do |item_image|
-                  = image_tag "#{item_image.src}"
-                  .toppage-category__body
-                    %h3= item.name
-                    .details
-                      %ul
-                        %li= item.price
-                        %li
-                          %i.fa.fa-star.likeIcon
-                          0
-                      %p (税込)
+                = image_tag "#{item.item_images[0].src}"
+                .toppage-category__body
+                  %h3= item.name
+                  .details
+                    %ul
+                      %li= item.price
+                      %li
+                        %i.fa.fa-star.likeIcon
+                        0
+                    %p (税込)
        
   .toppage-category
     %h2.toppage-category__title-up ピックアップブランド
@@ -117,17 +116,16 @@
           .toppage-category__list
             = link_to item_path(item.id) do
               .toppage-category__list-img
-                - item.item_images.each do |item_image|
-                  = image_tag "#{item_image.src}"
-                  .toppage-category__body
-                    %h3= item.name
-                    .details
-                      %ul
-                        %li= item.price
-                        %li
-                          %i.fa.fa-star.likeIcon
-                          0
-                      %p (税込)
+                = image_tag "#{item.item_images[0].src}"
+                .toppage-category__body
+                  %h3= item.name
+                  .details
+                    %ul
+                      %li= item.price
+                      %li
+                        %i.fa.fa-star.likeIcon
+                        0
+                    %p (税込)
        
 -# ----------------------------------                
 -# .appBanner3

@@ -33,20 +33,17 @@
             = @item.name
           .main__content__main__item-box__image
             %ul.main__content__main__item-box__image__images
-              %li.main__content__main__item-box__image__images__image
-                = image_tag "/hoge/product1-1.jpg"
+              %li.main__content__main__item-box__image__images__image 
+                = image_tag "#{@item.item_images[0].src}",size: "250x250"
                 %ul
-                  %li
-                    = image_tag "/hoge/product1-2.jpg"
-                  %li
-                    = image_tag "/hoge/product1-3.jpg"
-                  %li
-                    = image_tag "/hoge/product1-4.jpg"
+                  - @item.item_images.each do |item_image|
+                    %li
+                      = image_tag "#{item_image.src}",size: "70x70"
+                   
           .main__content__main__item-box__price
             %span.main__content__main__item-box__price-price
-              %span
-                ¥           
-              =@item.price
+              ¥
+              = @item.price
             .main__content__main__item-box__price-detail
               %span
                 (税込)
@@ -58,10 +55,10 @@
             %table 
               %tr
                 %th 出品者
-                %td=@user.nickname
+                %td= @item.user.nickname
               %tr
                 %th カテゴリー
-                %td
+                %td 
                   = link_to "#" do
                     = @item.category.parent.parent.name
                     %br
@@ -72,7 +69,7 @@
                     = @item.category.name
               %tr
                 %th ブランド
-                %td 
+                %td= @item.brand.name if @item.brand
               %tr
                 %th 商品のサイズ
                 %td=@item.size
@@ -127,5 +124,5 @@
             後ろの商品
       .main__content__read-items
         = link_to "#" do
-          メンズをもっと見る
+          = @item.category.parent.parent.name
 = render partial: 'tops/toppage-footer'
