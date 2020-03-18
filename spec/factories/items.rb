@@ -13,8 +13,10 @@ FactoryBot.define do
     price             {"000"}
     trading_status    {"出品中"}
     association :user
-    factory :item_image do
-      src {"image.png"}
-    end
+    # item_images_attributes { attributes_for(:item_image) }  
+    # factory :item_image do
+    #   src {"image.png"}
+    #   # item_id {"1"}
+    # end
   end
 end
