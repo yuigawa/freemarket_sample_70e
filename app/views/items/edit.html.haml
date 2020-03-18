@@ -10,12 +10,14 @@
       .main-flame-all-box-buy_content
         .main-flame-all-box-buy_content-item
           .main-flame-all-box-buy_content-item_box
-            .main-flame-all-box-buy_content-item_box-image
+            %li.main__content__main__item-box__image__images__image 
             .main-flame-all-box-buy_content-item_box-detail
               .main-flame-all-box-buy_content-item_box-detail_name
-                商品
+                = @item.name
               .main-flame-all-box-buy_content-item_box-detail_price
-                ¥1,600 （税込）送料込み
+              %span
+                ¥           
+              =@item.price
       .main-flame-all-box-choice
         .main-flame-all-box-choice-flame
           .main-flame-all-box-choice-flame-price
@@ -23,10 +25,10 @@
               .main-flame-all-box-choice-flame-price_box_text
                 支払い金額
               .main-flame-all-box-choice-flame-price_box_number
-                ¥1,600
+                =@item.price
             .main-flame-all-box-choice-flame-price_point
               = icon('far', 'square')
-              ポイントを使用 (所持ポイント: P300)
+              ポイントを使用 (所持ポイント: P0)
 
           .main-flame-all-box-choice-payment
             .main-flame-all-box-choice-payment-text

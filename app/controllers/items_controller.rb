@@ -37,6 +37,8 @@ class ItemsController < ApplicationController
   
 
   def edit
+    @item = Item.find(params[:id])
+    @user = User.find(@item.user_id)
     @child_categories = Category.where(ancestry: params[:keyword])
     respond_to do |format|
       format.html
