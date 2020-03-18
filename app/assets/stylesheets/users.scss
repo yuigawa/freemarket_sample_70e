@@ -77,11 +77,17 @@
           a {
             position: relative;
           }
-          i {
-            position: absolute;
-            line-height: 50px;
+          // i {
+          //   position: absolute;
+          //   line-height: 50px;
+          //   color: #b6b5b5bb;
+          //   left: 210px;
+          // }
+          .icon-possition {
             color: #b6b5b5bb;
-            left: 250px;
+            float: right;
+            line-height: 50px;
+            padding-right: 5px;
           }
         }
       }
