@@ -1,0 +1,45 @@
+/* トップページのヘッダーテンプレ */
+.toppage-header
+  = render partial: 'tops/toppage-header'
+
+/* マイページのnavbarのコピペ */
+.mypage-wrapper
+  %nav.brand-wrapper
+    %ul
+      %li 
+        = link_to "#" do
+          FURIMA
+      %li
+        = icon('fa', 'angle-right')
+      %li 
+        %p
+          クレジットカード登録情報
+
+/* マイページのsidebar部分テンプレ */
+.mypage
+  .mymain
+    = render partial: 'users/mypage-side'
+
+    .mycard
+      %h1 登録クレジットカード情報
+      .right-top
+        .cardlist-look
+          %label カード番号
+          %br
+        .cardnumber-look
+          = "**** **** **** " + @default_card_information.last4
+          %br
+        .datelist-look
+          %label 有効期限
+          %br
+        .date-look
+          - exp_month = @default_card_information.exp_month.to_s
+          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+          = exp_month + " / " + exp_year
+        .delete-button
+          = form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+            %input{ type: "hidden", name: "card_id", value: "" }
+            %button 削除する
+
+/* トップページのフッダーテンプレ */
+= render partial: 'tops/toppage-footer'

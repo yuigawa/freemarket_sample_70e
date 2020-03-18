@@ -1,13 +1,14 @@
 .devire_wrrper{
   .main{
-    height: 100vh;
+    height: 1420px;
     width: 100vw;
     display: block;
     &_contents{
       width: 700px;
-      height: 100vh;
+      height: 1400px;
       margin: 0 auto;
       padding: 24px 16px 40px;
+      background-color: white;
       h2{
         font-size: 22px;
         text-align: center;
@@ -55,9 +56,11 @@
         .address_scrren{
           .select_default{
           width: 100%;
-          }
-          i{
-            right: 150px;
+          background-color: white;
+          border: 1px solid #ccc;
+            i{
+              right: 150px;
+            }
           }
         }
 
