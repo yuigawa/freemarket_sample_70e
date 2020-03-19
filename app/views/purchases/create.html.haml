@@ -3,15 +3,15 @@
     = link_to root_path do
       = image_tag "material/logo/logo.png", size: "200x58"
 
-  .main
-    .contents
-      .content
+  .buy-main
+    .buy-contents
+      .buy-content
         %p
           購入が完了しました
       .confirm-btn
         .button
-          %p
-            トップページへ戻る
+          = link_to "トップページへ戻る", root_path
+
 
   .footer
     %ul 
