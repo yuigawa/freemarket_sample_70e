@@ -114,8 +114,8 @@
               .box__sell-info--title 販売利益
               .box__sell-info--price#price-box__profit#sell-profit －
             .box__btn-wrapper
-              = f.submit "変更する", class: "box__btn-wrapper__submit btn"
-              = link_to "#", class:"box__btn-wrapper__back btn" do
+              = f.submit "変更する", class: "box__btn-wrapper__submit btn", id: "edit_submit_button"
+              = link_to item_path(@item.id), class:"box__btn-wrapper__back btn" do
                 戻る
             %p.box__attention
               禁止されている
