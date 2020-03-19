@@ -77,11 +77,11 @@
           a {
             position: relative;
           }
-          i {
-            position: absolute;
-            line-height: 50px;
+          .icon-possition {
             color: #b6b5b5bb;
-            left: 250px;
+            float: right;
+            line-height: 50px;
+            padding-right: 6px;
           }
         }
       }

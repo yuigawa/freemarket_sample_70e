@@ -72,22 +72,19 @@
               .birthday_select_wrap
                 .select_wrap
                 = f.fields_for :profile do |t|
-                  = t.select :birth_year, options_for_select(@birth_year.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
-                  = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+                  = t.select :birth_year, options_for_select(@birth_year.map{|c|[c[:name], c[:name]]}), {prompt: "--"}
                   %span 年
 
                 -# 生年月日 月
                 .select_wrap.select_wrap_month
                 = f.fields_for :profile do |t|
-                  = t.select :birth_month, options_for_select(@birth_month.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
-                  = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+                  = t.select :birth_month, options_for_select(@birth_month.map{|c|[c[:name], c[:name]]}), {prompt: "--"}
                   %span 月
 
                 -# 生年月日 日
                 .select_wrap.select_wrap_day
                 = f.fields_for :profile do |t|
-                  = t.select :birth_day, options_for_select(@birth_day.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
-                  = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+                  = t.select :birth_day, options_for_select(@birth_day.map{|c|[c[:name], c[:name]]}), {prompt: "--"}
                   %span 日
                 
               -# 郵便番号
@@ -102,9 +99,9 @@
               .form_group.address_scrren
                 = f.label :prefecture_code do
                   都道府県
+                  %br
                 = f.fields_for :user_address do |t|
-                  = t.select :prefecture_code,  options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt: "--"}, { class: "select_default" } 
-                  = icon('fa', 'angle-down', class:"icon_arrow_bottom")
+                  = t.select :prefecture_code,  options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), {prompt: "--"}
 
               -# 市区町村
               .form_group
