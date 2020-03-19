@@ -10,14 +10,12 @@
       .main-flame-all-box-buy_content
         .main-flame-all-box-buy_content-item
           .main-flame-all-box-buy_content-item_box
-            %li.main__content__main__item-box__image__images__image 
+            = image_tag "#{@item.item_images[0].src}",size: "120x120"
             .main-flame-all-box-buy_content-item_box-detail
               .main-flame-all-box-buy_content-item_box-detail_name
                 = @item.name
               .main-flame-all-box-buy_content-item_box-detail_price
-              %span
-                ¥           
-              =@item.price
+              = ('¥' + @item.price.to_s(:delimited) + '(税込)送料込み')
       .main-flame-all-box-choice
         .main-flame-all-box-choice-flame
           .main-flame-all-box-choice-flame-price
@@ -25,7 +23,7 @@
               .main-flame-all-box-choice-flame-price_box_text
                 支払い金額
               .main-flame-all-box-choice-flame-price_box_number
-                =@item.price
+                = ('¥' + @item.price.to_s(:delimited))
             .main-flame-all-box-choice-flame-price_point
               = icon('far', 'square')
               ポイントを使用 (所持ポイント: P0)
@@ -45,10 +43,10 @@
               = link_to "#", class: "registration_link" do
                 = icon('fas', 'plus-circle')
                 登録してください
-
           .main-flame-all-box-choice-buy
             .main-flame-all-box-choice-buy-button
               = link_to '購入する', '#', class: 'button'
+              
 
 .buy-exhibition_footer
   .buy-exhibition_footer-flame
