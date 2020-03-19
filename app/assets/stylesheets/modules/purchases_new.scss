@@ -269,6 +269,11 @@ $flame-border_coler: rgb(238, 236, 236);
               background-color: gray;
               font-family: 'arial narrow';
               color: white;
+              cursor: pointer;
+            }
+            .red {
+              background-color: red;
+              border-color: red;
             }
           }
         }
