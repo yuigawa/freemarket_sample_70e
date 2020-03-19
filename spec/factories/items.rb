@@ -16,7 +16,6 @@ FactoryBot.define do
     association :user
 
     after(:build) do |item|
-      # item_image = build(:item_image)
       item.item_images << build(:item_image, item_id: item)
     end
 
