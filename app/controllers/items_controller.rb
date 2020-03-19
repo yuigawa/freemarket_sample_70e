@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :redirect_to_log_in, only: [:new, :create]
   before_action :set_info, only: [:new, :create, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def new
     @item = Item.new
@@ -31,20 +32,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+
   end
   
 
   def edit
-    @item = Item.find(params[:id])
-
-    
-
     render layout: 'application'
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -56,7 +52,6 @@ class ItemsController < ApplicationController
 
 
   def destroy
-    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path
     else
@@ -97,6 +92,10 @@ class ItemsController < ApplicationController
 
   def new_image_params
     params.require(:new_images).permit({images: []})
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
