@@ -53,8 +53,6 @@
               %label カテゴリー
               %span.box__title--required 必須
             .form__group
-              -# = f.select :category, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: 'box__input', id: 'parent_category'}
-                -# = f.fields_for :category, @category do |category|
               = f.select :category, options_for_select(Category.where(ancestry: nil).map{|c|[c[:name], c[:id],{}]}, @item.category.parent.parent.id), {}, {class: 'box__input', id: 'parent_category'}
               = f.select :category, options_for_select(@item.category.parent.parent.children.map{|c|[c[:name], c[:id],{}]}, @item.category.parent.id), {}, {class: 'box__input', id: 'child_category'}
               = f.select :category_id, options_for_select(@item.category.parent.children.map{|c|[c[:name], c[:id],{}]}, @item.category.id), {}, {class: 'box__input', id: 'grandchild_category'}

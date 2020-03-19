@@ -37,11 +37,8 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @images_length = @item.item_images.length
-    @category = @item.category
-    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
 
+    
 
     render layout: 'application'
   end
