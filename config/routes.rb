@@ -16,6 +16,10 @@ Rails.application.routes.draw do
       post 'show', to: 'cards#show'
       post 'pay', to: 'cards#pay'
       post 'delete', to: 'cards#delete'
+  resources :posts do
+      post 'add', to: 'favorites#create'
+      delete '/add', to: 'favorites#destroy'
+      end
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

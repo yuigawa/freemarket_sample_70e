@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :comments
   has_many :favorites
+  has_many :posts,through: :favorites
   has_one  :profile
   has_one  :user_address
   has_many :cards
