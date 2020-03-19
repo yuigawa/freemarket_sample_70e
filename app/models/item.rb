@@ -22,12 +22,13 @@ class Item < ApplicationRecord
     validates :trading_status
   end
 
-  validate :require_any_item_image
-  def require_any_item_image
-    errors.add(:base, :no_item_image) if item_images.blank?
-  end
+  # validate :require_any_item_image
+  # def require_any_item_image
+  #   errors.add(:base, :no_item_image) if item_images.blank?
+  # end
   
   has_many :item_images,dependent: :destroy
+  validates :item_images, presence: true
   has_many :comments
   has_many :favorites
   belongs_to :user

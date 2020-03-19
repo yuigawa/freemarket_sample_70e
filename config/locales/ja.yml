@@ -16,6 +16,7 @@ ja:
         prefecture_code: "発送元の地域"
         estimated_shipping_date: "発送までの日数"
         price: "価格"
+        item_images: "画像"
       item/item_images:
         src: "画像"
     errors:

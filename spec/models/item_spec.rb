@@ -15,8 +15,6 @@ describe Item do
 
   it "is valid with a name that has less than 40 characters" do
     item = build(:item, name: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    binding.pry
-    item.item_images.build(attributes_for(:item_image))
     
     # item.item_images.build(:item_image)
     # binding.pry
