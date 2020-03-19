@@ -1,6 +1,7 @@
 require 'rails_helper'
 describe Item do
   describe '#create' do
+
   it "is invalid without name" do
     item = build(:item, name: "")
     item.valid?
@@ -15,10 +16,18 @@ describe Item do
 
   it "is valid with a name that has less than 40 characters" do
     item = build(:item, name: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    
-    # item.item_images.build(:item_image)
-    # binding.pry
+
     expect(item).to be_valid
+  end
+
+  it "is invalid without item_description" do
+    item = build(:item, item_description: "")
+    item.valid?
+    expect(item.errors[:item_description]).to include("は1文字以上で入力してください")
+  end
+
+  it "is invalid with item_description that more than 1001 characters" do
+    item = build(:item, item_description: "")
   end
 
   it "is invalid without category_id" do

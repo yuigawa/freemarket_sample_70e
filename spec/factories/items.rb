@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :item do
+    id                {"1"}
     name              {"tanaka"}
     item_description  {"これはテストです"}
     category_id       {"1"}
@@ -13,11 +14,11 @@ FactoryBot.define do
     price             {"000"}
     trading_status    {"出品中"}
     association :user
-    # association :item_image
-    # item_images_attributes { attributes_for(:item_image) }  
-    factory :item_image do
-      src {"image.png"}
-      # item_id {"1"}
+
+    after(:build) do |item|
+      # item_image = build(:item_image)
+      item.item_images << build(:item_image, item_id: item)
     end
+
   end
 end
