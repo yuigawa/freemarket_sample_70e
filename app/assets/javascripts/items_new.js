@@ -18,13 +18,23 @@ $(function() {
       const imgWidth = (fileCount) * 105;
       $('#img-box').css({'width':`${imgWidth}px`});
       $('#file-box').css({'width':`calc(100% - ${imgWidth}px)`});
+    } else {
+      const imgWidth = 525;
+      $('#img-box').css({'width':`${imgWidth}px`});
+      $('#file-box').css({'width':`calc(100% - ${imgWidth}px)`});
     }
   }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.box__file__field--file:last').data('index');
   fileIndex.splice(0, lastIndex);
-  let fileCount = 0;
+  var fileCount = 0;
+
+  if ($('#file-box').data('edit') === "edit") {
+    var fileCount = $('.box__file__field--file').length;
+    $('#file-box').append(buildFileField(fileIndex[0] + 1));
+    selectWidth(fileCount, 5);
+  }
 
   $('#file-box').on('click', '.box__file__field--file', function(e) {
     if (fileCount > 9) {
@@ -51,6 +61,7 @@ $(function() {
     const targetIndex = $(this).data('index');
     $(this).parent().remove();
     $(`#item_item_images_attributes_${targetIndex}_src`).remove();
+    $(`#item_item_images_attributes_${targetIndex}__destroy`).prop('checked', true);
     fileCount -= 1;
     selectWidth(fileCount, 5);
   });

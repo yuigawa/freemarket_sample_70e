@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :redirect_to_log_in, only: [:new, :create]
   before_action :set_info, only: [:new, :create, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def new
     @item = Item.new
@@ -31,20 +32,26 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+
   end
   
 
   def edit
-    @child_categories = Category.where(ancestry: params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    render layout: 'application'
   end
 
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+    
+    
+  end
+
+
   def destroy
-    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path
     else
@@ -58,7 +65,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :item_description, :category_id, :brand_id, :size, :item_condition, :postage_type, :postage_payer, :prefecture_code, :estimated_shipping_date, :price, item_images_attributes: [:src]).merge(user_id: current_user.id, trading_status:"出品中")
+    params.require(:item).permit(:name, :item_description, :category_id, :brand_id, :size, :item_condition, :postage_type, :postage_payer, :prefecture_code, :estimated_shipping_date, :price, item_images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id, trading_status:"出品中")
   end
 
   def set_info
@@ -79,5 +86,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def registered_image_params
+    params.require(:registered_images_ids).permit({ids: []})
+  end
+
+  def new_image_params
+    params.require(:new_images).permit({images: []})
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
 end
