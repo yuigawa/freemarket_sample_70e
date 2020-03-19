@@ -218,6 +218,9 @@ $non-colored-color-white:#fff;
     width: 100%;
     vertical-align: bottom;
   }
+  img:hover{
+    opacity: 0.5;
+  }
   .picture {
     position: absolute;
     top: 0;
@@ -343,6 +346,9 @@ $non-colored-color-white:#fff;
     }
     .Btn {
       @include Btn;
+    }
+    .Btn:hover{
+      opacity: 0.5;
     }
   }
   
@@ -509,6 +515,9 @@ $non-colored-color-white:#fff;
   }
   .Btn {
     @include Btn;
+  }
+  img:hover{
+    opacity: 0.5;
   }
 }
 
