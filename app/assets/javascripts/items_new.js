@@ -51,7 +51,7 @@ $(function() {
           const blobUrl = window.URL.createObjectURL(file);
           fileCount += 1;       
           selectWidth(fileCount, 5);
-          $('#img-box').append(buildImg(fileIndex[0] - 1, blobUrl)); 
+          $(buildImg(fileIndex[0] - 1, blobUrl)).appendTo($('#img-box')).hide().fadeIn(300); 
           
           fileIndex.shift();
           fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
@@ -76,6 +76,14 @@ $(function() {
       $('#sell-profit').text("－");     
     }
   });
+  $('#edit_submit_button').on('click', function() {
+    if (fileCount === 0) {
+      var targetY = $('.header').offset().top;
+      $('html, body').animate({ scrollTop: targetY }, 1200, 'swing');
+      alert('画像が一枚もアップロードされていません');
+      return false;
+    }
+  })
   $('#item-name-field').on('keyup change', function() {
     var textLength = $(this).val().length;
     $('#name-num').text(`${textLength}/40`);
