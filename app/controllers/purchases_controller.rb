@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
   end
 
   def new
-    @user = User.find(current_user.id)
+    User.find(current_user.id)
     #Cardのデータpayjpに送り情報を取り出します
     @card = Card.where(user_id: current_user.id).first
     if @card
@@ -16,7 +16,7 @@ class PurchasesController < ApplicationController
     end
   end
   def create
-    item.update(trading_status: "購入済", buyer_id: current_user.id)
+    @item.update(trading_status: "購入済", buyer_id: current_user.id)
   end
 
 end
