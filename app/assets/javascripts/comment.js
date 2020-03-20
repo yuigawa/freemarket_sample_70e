@@ -55,7 +55,7 @@ $(function() {
     }
   }, '.main__content__main__comment-box__contents__content')
 
-  $('.main__content__main__comment-box__contents__content__comment__delete').on('click', function(e) {
+  $(document).on('click', '.main__content__main__comment-box__contents__content__comment__delete', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
     var item_id = $(this).data('item-id');
