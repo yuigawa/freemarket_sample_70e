@@ -9,7 +9,10 @@ $(function() {
                     ${comment.message}
                     <div class="main__content__main__comment-box__contents__content__comment__delete" data-id="${comment.id}" data-item-id="${comment.item_id}" style="display: none;">
                       削除
+                    </div>
                   </div>
+                  <div class="main__content__main__comment-box__contents__content__time">
+                    ${comment.time}
                   </div>
                 </li>
                 `;
@@ -46,14 +49,14 @@ $(function() {
 
   $(document).on({
     "mouseenter": function() {
-      var id = $(this).data('id');
+      var id = $(this).parent().data('id');
       $(`.main__content__main__comment-box__contents__content__comment__delete[data-id="${id}"]`).show();     
     },
     "mouseleave": function() {
-      var id = $(this).data('id');
+      var id = $(this).parent().data('id');
       $(`.main__content__main__comment-box__contents__content__comment__delete[data-id="${id}"]`).hide();  
     }
-  }, '.main__content__main__comment-box__contents__content')
+  }, '.main__content__main__comment-box__contents__content__comment')
 
   $(document).on('click', '.main__content__main__comment-box__contents__content__comment__delete', function(e) {
     e.preventDefault();

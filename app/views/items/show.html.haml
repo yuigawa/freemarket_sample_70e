@@ -116,6 +116,8 @@
                   - if comment.user_id == current_user.id
                     .main__content__main__comment-box__contents__content__comment__delete{data: {id: comment.id, item_id: comment.item_id}}
                       削除
+                .main__content__main__comment-box__contents__content__time
+                  = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
           = form_for [@item,@comment] do |f|
             = f.text_area :message, id: "comment-text"
             %p
