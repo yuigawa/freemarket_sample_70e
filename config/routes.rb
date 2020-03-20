@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   root 'tops#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :tops
