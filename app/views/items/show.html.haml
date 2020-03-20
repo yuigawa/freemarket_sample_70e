@@ -106,23 +106,14 @@
                   不適切な商品の通報
         .main__content__main__comment-box
           %ul.main__content__main__comment-box__contents
-            %li.main__content__main__comment-box__contents__content
-              .main__content__main__comment-box__contents__content--name
-                = link_to '#' do
-                  たけいし
-              .main__content__main__comment-box__contents__content--comment
-                こんにちは
-            %li.main__content__main__comment-box__contents__content
-              .main__content__main__comment-box__contents__content--name
-                たけいし
-              .main__content__main__comment-box__contents__content--comment
-                こんにちは
-            %li.main__content__main__comment-box__contents__content
-              .main__content__main__comment-box__contents__content--name
-                たけいし
-              .main__content__main__comment-box__contents__content--comment
-                こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは
-          = form_for @comment do |f|
+            - @comments.each do |comment|
+              %li.main__content__main__comment-box__contents__content
+                .main__content__main__comment-box__contents__content--name
+                  = link_to user_path(comment.user) do
+                    = comment.user.nickname
+                .main__content__main__comment-box__contents__content--comment
+                  = comment.message
+          = form_for [@item,@comment] do |f|
             = f.text_area :message
             %p
               相手のことを考え丁寧なコメントを心がけましょう。 
