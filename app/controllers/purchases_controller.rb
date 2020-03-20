@@ -12,7 +12,11 @@ class PurchasesController < ApplicationController
     end
   end
   def create
-    @item.update(trading_status: "購入済", buyer_id: current_user.id)
+    if @item.update(trading_status: "購入済", buyer_id: current_user.id)
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
