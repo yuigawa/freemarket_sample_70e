@@ -92,7 +92,7 @@
               = link_to '編集', edit_item_path(@item.id), class: 'button'
               = link_to "削除", item_path(@item.id), method: :delete, data: { confirm: "本当に削除しますか？" } , class: 'button'
             - else 
-              = link_to '購入画面に進む', edit_item_path(@item.id), class: 'bttn'
+              = link_to '購入画面に進む', new_item_purchase_path(@item.id), class: 'bttn'
      
           .main__content__main__item-box__option
             %ul.main__content__main__item-box__option__like
