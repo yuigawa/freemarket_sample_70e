@@ -122,8 +122,8 @@
                 たけいし
               .main__content__main__comment-box__contents__content--comment
                 こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは
-          = form_tag "#" do
-            %textarea
+          = form_for @comment do |f|
+            = f.text_area :message
             %p
               相手のことを考え丁寧なコメントを心がけましょう。 
               %br
