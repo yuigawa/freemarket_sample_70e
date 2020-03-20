@@ -105,21 +105,21 @@
                   = icon('fa', 'flag')
                   不適切な商品の通報
         .main__content__main__comment-box
-          %ul.main__content__main__comment-box__contents
+          %ul.main__content__main__comment-box__contents#comments-box
             - @comments.each do |comment|
-              %li.main__content__main__comment-box__contents__content
+              %li.main__content__main__comment-box__contents__content{data: {id: comment.id}}
                 .main__content__main__comment-box__contents__content--name
                   = link_to user_path(comment.user) do
                     = comment.user.nickname
                 .main__content__main__comment-box__contents__content--comment
                   = comment.message
           = form_for [@item,@comment] do |f|
-            = f.text_area :message
+            = f.text_area :message, id: "comment-text"
             %p
               相手のことを考え丁寧なコメントを心がけましょう。 
               %br
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            = button_tag "", type: 'submit' do
+            = button_tag "", type: 'submit', id: 'comment-submit' do
               = icon('fa', 'comment')
               コメントする
       %ul.main__content__links

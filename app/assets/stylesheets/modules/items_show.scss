@@ -186,14 +186,13 @@ body {
                 min-height: 60px;
                 border-radius: 10px;
                 margin-top: 15px;
-                padding: 5px;
+                padding: 7px;
               }
               &:before {
                 content: "";
                 position: absolute;
                 top: 17px;
                 left: 10px;
-                // margin-top: -15px;
                 border: 10px solid transparent;
                 border-left: 15px solid rgb(208, 230, 240);
                 z-index: 0;
