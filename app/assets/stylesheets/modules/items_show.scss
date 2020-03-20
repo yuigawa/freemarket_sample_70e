@@ -10,6 +10,7 @@ body {
 .show-wrapper {
   $base-blue: #3CCACE;
   $base-black: #333;
+  $base-gray: #f8f8f8;
   $table-border-color: #dedede;
 
   @mixin flex($j-content: center, $al-items: center) {
@@ -46,7 +47,7 @@ body {
   }
   
   .main {
-    background-color: #f8f8f8;
+    background-color: $base-gray;
     margin-bottom: 30px;
     &__content {
       margin: 0 auto;
@@ -168,11 +169,67 @@ body {
           background-color: white;
           margin: 10px 0;
           text-align: center;
+          &__contents {
+            padding: 10px 0;
+            margin-bottom: 10px;
+            border-top: 5px $base-gray solid;
+            &__content {
+              text-align: left;
+              margin-top: 10px;
+              position: relative;
+              &__name {
+                font-weight: bold;
+                padding-left: 5px;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+              &__comment {
+                background-color: rgb(208, 230, 240);
+                min-height: 60px;
+                border-radius: 10px;
+                margin-top: 15px;
+                padding: 7px;
+                position: relative;
+                cursor: pointer;
+                &__delete {
+                  position: absolute;
+                  top: 5px;
+                  right: 8px;
+                  background-color: white;
+                  border-radius: 8px;
+                  padding: 0 3px;
+                  border: 2px darkgray solid;
+                  display: none;
+                  &:hover {
+                    border: 2px red solid;
+                  }
+                }
+              }
+              &__time {
+                text-align: right;
+                font-size: 12px;
+                color: darkgray;
+              }
+              &:before {
+                content: "";
+                position: absolute;
+                top: 17px;
+                left: 10px;
+                border: 10px solid transparent;
+                border-left: 15px solid rgb(208, 230, 240);
+                z-index: 0;
+                -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+              }
+            }
+          }
           form {
             textarea {
               width: 100%;
               min-height: 104px;
               padding: 10px;
+              resize: vertical;
             }
             p {
               padding: 8px;
