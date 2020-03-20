@@ -2,7 +2,6 @@ class PurchasesController < ApplicationController
   before_action:set_item
 
   def new
-    User.find(current_user.id)
     #Cardのデータpayjpに送り情報を取り出します
     @card = Card.where(user_id: current_user.id).first
     if @card
@@ -12,9 +11,7 @@ class PurchasesController < ApplicationController
     end
   end
   def create
-    if @item.update(trading_status: "購入済", buyer_id: current_user.id)
-      redirect_to root_path
-    else
+    unless @item.update(trading_status: "購入済", buyer_id: current_user.id)
       render :new
     end
   end
