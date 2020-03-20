@@ -27,8 +27,8 @@ class Item < ApplicationRecord
     errors.add(:base, :no_item_image) if item_images.blank?
   end
   
-  has_many :item_images,dependent: :destroy
-  has_many :comments
+  has_many :item_images, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :favorites
   belongs_to :user
   belongs_to :brand, optional: true

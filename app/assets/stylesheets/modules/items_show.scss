@@ -177,16 +177,31 @@ body {
               text-align: left;
               margin-top: 10px;
               position: relative;
-              &--name {
+              &__name {
                 font-weight: bold;
                 padding-left: 5px;
               }
-              &--comment {
+              &__comment {
                 background-color: rgb(208, 230, 240);
                 min-height: 60px;
                 border-radius: 10px;
                 margin-top: 15px;
                 padding: 7px;
+                position: relative;
+                cursor: pointer;
+                &__delete {
+                  position: absolute;
+                  top: 5px;
+                  right: 8px;
+                  background-color: white;
+                  border-radius: 8px;
+                  padding: 0 3px;
+                  border: 2px darkgray solid;
+                  display: none;
+                  &:hover {
+                    border: 2px red solid;
+                  }
+                }
               }
               &:before {
                 content: "";
