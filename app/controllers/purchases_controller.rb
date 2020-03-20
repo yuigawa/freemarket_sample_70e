@@ -1,10 +1,6 @@
 class PurchasesController < ApplicationController
   before_action:set_item
 
-  def set_item
-    @item = Item.find(params[:item_id]) 
-  end
-
   def new
     User.find(current_user.id)
     #Cardのデータpayjpに送り情報を取り出します
@@ -19,4 +15,8 @@ class PurchasesController < ApplicationController
     @item.update(trading_status: "購入済", buyer_id: current_user.id)
   end
 
+  private
+  def set_item
+    @item = Item.find(params[:item_id]) 
+  end
 end
