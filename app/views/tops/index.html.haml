@@ -99,7 +99,7 @@
                   %h3= item.name
                   .details
                     %ul
-                      %li= item.price
+                      = ('¥' + item.price.to_s(:delimited))
                       %li
                         %i.fa.fa-star.likeIcon
                         0
@@ -121,7 +121,7 @@
                   %h3= item.name
                   .details
                     %ul
-                      %li= item.price
+                      = ('¥' + item.price.to_s(:delimited))
                       %li
                         %i.fa.fa-star.likeIcon
                         0

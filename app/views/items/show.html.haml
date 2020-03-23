@@ -42,15 +42,14 @@
                    
           .main__content__main__item-box__price
             %span.main__content__main__item-box__price-price
-              ¥
-              = @item.price
+              = ('¥' + @item.price.to_s(:delimited))
             .main__content__main__item-box__price-detail
               %span
                 (税込)
               %span
                 送料込み
           .main__content__main__item-box__detail
-            = @item.name
+            = @item.item_description
           .main__content__main__item-box__table
             %table 
               %tr
