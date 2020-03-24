@@ -44,8 +44,8 @@
             .main-flame-all-box-choice-delivery-text
               配送先
             .main-flame-all-box-choice-delivery-registration
-              - if @user.user_address
-                = @user.user_address.prefecture_code + @user.user_address.city + @user.user_address.house_number + @user.user_address.building_name
+              - if User.find(current_user.id).user_address
+                = User.find(current_user.id).user_address.prefecture_code + User.find(current_user.id).user_address.city + User.find(current_user.id).user_address.house_number + User.find(current_user.id).user_address.building_name
               - else 
                 = link_to "#", class: "registration_link" do
                   = icon('fas', 'plus-circle')
@@ -53,7 +53,7 @@
 
           .main-flame-all-box-choice-buy
             .main-flame-all-box-choice-buy-button
-              - if @card && @user.user_address
+              - if @card && User.find(current_user.id).user_address
                 = link_to '購入する', item_purchases_path(@item.id), method: :post, class: 'button red'
               - else
                 .button 購入する
