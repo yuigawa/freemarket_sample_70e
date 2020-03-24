@@ -34,13 +34,7 @@ describe Profile do
       expect(user_address.errors[:house_number]).to include("を入力してください")
     end
 
-    # 6. building_nameが空では登録できないこと
-    it "is invalid without a building_name" do
-      user_address= build(:user_address, building_name: nil)
-      user_address.valid?
-      expect(user_address.errors[:building_name]).to include("を入力してください")
-    end
-
+    
   end
 end
   

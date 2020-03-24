@@ -1,19 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe CardsController, type: :controller do
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
-    end
-  end
-
+# Specs in this file have access to a helper object that includes
+# the CardsHelper. For example:
+#
+# describe CardsHelper do
+#   describe "string concat" do
+#     it "concats two strings with spaces" do
+#       expect(helper.concat_strings("this","that")).to eq("this that")
+#     end
+#   end
+# end
+RSpec.describe CardsHelper, type: :helper do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
