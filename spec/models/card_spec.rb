@@ -2,7 +2,7 @@ require 'rails_helper'
 
 #クレカが登録してあれば購入できる
 describe  Card do
-  describe '#new' do
+  describe '#delete' do
 
     it "is invalid without a customer_id" do
       card = build(:card, customer_id: "")
